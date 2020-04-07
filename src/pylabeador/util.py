@@ -17,19 +17,24 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
-from typing import List
-
-from .models import WordProgress
-from . import syllabify as _syllabify
-from .util import check_word_for_spanish_chars
+VOWELS = set('aáeéiíoóuúü')
+CONSONANTS = set('bcdfghjklmnñpqrstvwxyz')
+LETTERS = VOWELS.union(CONSONANTS)
 
 
-def syllabify_with_details(word: str) -> WordProgress:
-    check_word_for_spanish_chars(word)
-    res = _syllabify.hyphenate(word)
-    return res
+def is_vowel(v):
+    return v in VOWELS
 
 
-def syllabify(word: str) -> List[str]:
-    res = syllabify_with_details(word)
-    return [syl.value for syl in res.syllables]
+def check_word_for_spanish_chars(word):
+    from .errors import HyphenatorError
+
+    bad_letters = set(word.lower()) - LETTERS
+    if bad_letters:
+        raise HyphenatorError("The word {} contains invalid letters in Spanish: {}".format(word, bad_letters))
+    if "ü" in word:
+        pos = word.find("ü")
+        follows_g = pos > 0 and word[pos - 1] == 'g'
+        folowed_by_ei = pos + 1 < len(word) and word[pos + 1] in 'eiéí'
+        if not follows_g or not folowed_by_ei:
+            raise HyphenatorError(f"The word {word} does not seem to be Spanish, where ü can only appear in güe or güi")

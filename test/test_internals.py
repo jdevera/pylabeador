@@ -17,19 +17,28 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
-from typing import List
-
-from .models import WordProgress
-from . import syllabify as _syllabify
-from .util import check_word_for_spanish_chars
+from pylabeador import WordProgress
+from pylabeador.syllabify import onset, nucleus
 
 
-def syllabify_with_details(word: str) -> WordProgress:
-    check_word_for_spanish_chars(word)
-    res = _syllabify.hyphenate(word)
-    return res
+def test_onset():
+    w = WordProgress("queso")
+    res = onset(w)
+    assert res == "qu"
+    w.pos = 3
+    res = onset(w)
+    assert res == "s"
 
 
-def syllabify(word: str) -> List[str]:
-    res = syllabify_with_details(word)
-    return [syl.value for syl in res.syllables]
+def test_nucleus():
+    w = WordProgress("tras")
+    onset_res = onset(w)
+    assert onset_res == "tr"
+    nucleus_res = nucleus(w)
+    assert nucleus_res == "a"
+
+    w = WordProgress("huesca")
+    onset_res = onset(w)
+    assert onset_res == "h"
+    nucleus_res = nucleus(w)
+    assert nucleus_res == "ue"

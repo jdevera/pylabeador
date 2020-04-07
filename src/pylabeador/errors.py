@@ -17,19 +17,5 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
-from typing import List
-
-from .models import WordProgress
-from . import syllabify as _syllabify
-from .util import check_word_for_spanish_chars
-
-
-def syllabify_with_details(word: str) -> WordProgress:
-    check_word_for_spanish_chars(word)
-    res = _syllabify.hyphenate(word)
-    return res
-
-
-def syllabify(word: str) -> List[str]:
-    res = syllabify_with_details(word)
-    return [syl.value for syl in res.syllables]
+class HyphenatorError(Exception):
+    pass
