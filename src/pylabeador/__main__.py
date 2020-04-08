@@ -20,7 +20,7 @@
 import argparse
 import sys
 
-from . import syllabify, VERSION
+from . import syllabify_with_details, VERSION
 
 
 def parse_args(argv):
@@ -39,8 +39,8 @@ def main(argv=None):
     args = parse_args(argv)
     try:
         for word in args.words:
-            res = syllabify(word)
-            print(res)
+            res = syllabify_with_details(word)
+            print(res.hyphenated)
     except KeyboardInterrupt:
         sys.exit(-1)
 
