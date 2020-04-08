@@ -12,4 +12,4 @@ Automatic syllabification without additional lexical or and semantic *knowledge*
 
 # Inspiration / Original source
 
-This works is inspired by the excellent online tool [Silabeador TIP](https://tulengua.es/syllables/). This tool considers the semantics of the words and correctly separates syllables in the presence of prefixes. As a side, they also provide a C++ library that performs the naive syllable separation that pylabeador does. In fact, pyleabeador started as a python port of that library.
+This work is inspired by the excellent online tool [Silabeador TIP](https://tulengua.es/syllables/). This tool considers the semantics of the words and correctly separates syllables in the presence of prefixes. They also provide a C++ library that performs the naive syllable separation that *pylabeador* does. In fact, *pyleabeador* started as a Python port of that library.
