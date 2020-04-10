@@ -19,14 +19,14 @@
 
 from typing import List
 
-from .models import WordProgress
+from .models import SyllabifiedWord
 from . import syllabify as _syllabify
 from .util import check_word_for_spanish_chars
 
 
-def syllabify_with_details(word: str) -> WordProgress:
+def syllabify_with_details(word: str) -> SyllabifiedWord:
     check_word_for_spanish_chars(word)
-    res = _syllabify.hyphenate(word)
+    res = _syllabify.hyphenate(word).to_result()
     return res
 
 

@@ -42,7 +42,6 @@ def parametrize_with_words_from(source):
 @parametrize_with_words_from(spanish_common_words())
 def test_hyphenation_of_common_words(word, hyphenated, stressed):
     res = syllabify_with_details(word)
-    assert res.ended
     assert res.hyphenated == hyphenated
     assert res.stressed == stressed
 
@@ -54,6 +53,5 @@ def test_hyphenation_of_common_words(word, hyphenated, stressed):
 ])
 def test_special_words(word, hyphenated, stressed):
     res = syllabify_with_details(word)
-    assert res.ended
     assert res.hyphenated == hyphenated
     assert res.stressed == stressed

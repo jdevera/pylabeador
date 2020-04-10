@@ -63,6 +63,7 @@ def hyphenate(word: str) -> WordProgress:
             else:
                 word.stressed = num_syl
     word.syllables[word.stressed - 1].stressed = True
+    word.stress_found = True
     return word
 
 

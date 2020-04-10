@@ -37,6 +37,24 @@ class Syllable:
         return f"{self.onset}{self.nucleus}{self.coda}"
 
 
+@dataclass(frozen=True)
+class SyllabifiedWord:
+    original: str
+    syllables: List[Syllable]
+    stressed: Optional[int] = None
+    accented: Optional[int] = None
+
+    @property
+    def hyphenated(self):
+        return "-".join(s.value for s in self.syllables)
+
+    def hyphenate(self, with_stressed=False):
+        def value(s):
+            return s.value if not s.stressed or not with_stressed else f">{s.value}<"
+        return "-".join(value(s) for s in self.syllables)
+
+
+
 @dataclass
 class WordProgress:
     original_word: str
@@ -51,6 +69,7 @@ class WordProgress:
     def __post_init__(self):
         self.word = self.original_word.lower()
         self.len = len(self.word)
+
 
     @property
     def char(self):
@@ -98,15 +117,6 @@ class WordProgress:
     def __getitem__(self, item):
         return self.word[item]
 
-    @property
-    def hyphenated(self):
-        return "-".join(s.value for s in self.syllables)
-
-    def hyphenate(self, with_stressed=False):
-        def value(s):
-            return s.value if not s.stressed or not with_stressed else f">{s.value}<"
-        return "-".join(value(s) for s in self.syllables)
-
     def check(self):
         if self.stress_found:
             assert self.syllables[self.stressed - 1].stressed
@@ -121,6 +131,11 @@ class WordProgress:
     def current_syllable(self):
         if self.syllables:
             return self.syllables[-1]
+
+    def to_result(self) -> SyllabifiedWord:
+        assert self.ended
+        assert self.stress_found
+        return SyllabifiedWord(self.original_word, self.syllables, self.stressed, self.accent)
 
 
 class VowelType(Enum):
