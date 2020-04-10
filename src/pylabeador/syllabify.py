@@ -84,7 +84,7 @@ def onset(word: WordProgress):
 
     if not word.ended and word.one_behind is not None:
         last_two = word.one_behind + word.char
-        if last_two == 'qu' or (last_two == 'gu' and word.one_ahead in 'eiéí'):
+        if last_two == 'qu' or (last_two == 'gu' and str(word.one_ahead) in 'eiéí'):
             # qu is always in the onset
             # gu is only in the onset if it is followed by i or e
             word.next()

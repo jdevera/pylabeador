@@ -50,6 +50,7 @@ def test_hyphenation_of_common_words(word, hyphenated, stressed):
 @parametrize_with_words_from([
     ('Actuáis', 'Ac-tuáis', 2),
     ('Desagüe', 'De-sa-güe', 2),
+    ('fugu', 'fu-gu', 1),
 ])
 def test_special_words(word, hyphenated, stressed):
     res = syllabify_with_details(word)
