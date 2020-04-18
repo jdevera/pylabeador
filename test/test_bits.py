@@ -22,11 +22,13 @@ import pytest
 from pylabeador.util import is_vowel
 
 
+# fmt: off
 @pytest.mark.parametrize('value, expected', [
     ['a', True],
     ['ó', True],
     ['b', False],
     [None, False],
 ])
+# fmt: on
 def test_is_vowel(value, expected):
     assert is_vowel(value) == expected

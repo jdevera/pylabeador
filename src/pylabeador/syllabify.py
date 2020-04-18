@@ -233,9 +233,11 @@ def coda(word: WordProgress):  # noqa: C901
                 word.next()  # move the pointer to the y
             return
 
+        # fmt: off
         if digraph in ('gl', 'kl', 'bl', 'vl', 'pl', 'fl', 'tl',
                        'gr', 'kr', 'br', 'vr', 'pr', 'fr', 'tr', 'dr'):
             return
+        # fmt:on
 
         word.next()
         return

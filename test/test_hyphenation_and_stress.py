@@ -53,7 +53,7 @@ def test_hyphenation_of_common_words(word, hyphenated, stressed):
         ('Melón', 'Me-lón', 2, 3),
         ('Desagüe', 'De-sa-güe', 2, None),
         ('fugu', 'fu-gu', 1, None),
-    ]
+    ],
 )
 def test_special_words(word, hyphenated, stressed, accented):
     res = syllabify_with_details(word)
