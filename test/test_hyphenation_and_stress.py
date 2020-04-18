@@ -46,7 +46,7 @@ def parametrize_with_words_from(source):
 
 @parametrize_with_words_from(spanish_common_words())
 def test_hyphenation_of_common_words(word, hyphenated, stressed, accent_pos):
-    res = syllabify_with_details(word)    
+    res = syllabify_with_details(word)
     accented = accent_pos - 1 if accent_pos is not None else None
     assert res.hyphenated == hyphenated
     assert res.stressed == stressed - 1
@@ -60,7 +60,7 @@ def test_hyphenation_of_common_words(word, hyphenated, stressed, accent_pos):
         ('Melón', 'Me-lón', 2, 4),
         ('Desagüe', 'De-sa-güe', 2, None),
         ('fugu', 'fu-gu', 1, None),
-    ],
+    ]
 )
 def test_special_words(word, hyphenated, stressed, accent_pos):
     res = syllabify_with_details(word)
