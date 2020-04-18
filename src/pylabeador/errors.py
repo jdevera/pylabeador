@@ -17,5 +17,6 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
+
 class HyphenatorError(Exception):
     pass
