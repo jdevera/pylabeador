@@ -30,4 +30,3 @@ from pylabeador.util import is_vowel
 ])
 def test_is_vowel(value, expected):
     assert is_vowel(value) == expected
-

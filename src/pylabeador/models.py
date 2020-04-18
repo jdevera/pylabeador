@@ -51,8 +51,8 @@ class SyllabifiedWord:
     def hyphenate(self, with_stressed=False):
         def value(s):
             return s.value if not s.stressed or not with_stressed else f">{s.value}<"
-        return "-".join(value(s) for s in self.syllables)
 
+        return "-".join(value(s) for s in self.syllables)
 
 
 @dataclass
@@ -69,7 +69,6 @@ class WordProgress:
     def __post_init__(self):
         self.word = self.original_word.lower()
         self.len = len(self.word)
-
 
     @property
     def char(self):

@@ -19,7 +19,6 @@
 
 import pytest
 
-
 from pylabeador import syllabify_with_details
 from .utils import data_file_open
 

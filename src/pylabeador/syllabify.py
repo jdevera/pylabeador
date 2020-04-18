@@ -24,7 +24,6 @@ from .models import WordProgress, VowelType
 from .errors import HyphenatorError
 from .util import CONSONANTS, is_vowel
 
-
 CONSONANTS_BAR_Y = CONSONANTS - set("y")
 
 
@@ -79,7 +78,6 @@ def return_section(f):
 
 @return_section
 def onset(word: WordProgress):
-
     while not word.ended and word.char in CONSONANTS_BAR_Y:
         word.next()
 
@@ -95,7 +93,7 @@ def onset(word: WordProgress):
 
 
 @return_section
-def nucleus(word: WordProgress):
+def nucleus(word: WordProgress):  # noqa: C901
     start_pos = word.pos
 
     if word.ended:
@@ -152,7 +150,6 @@ def nucleus(word: WordProgress):
             word.stress_found = True
         word.next()
 
-
     # Closed-vowel with written accent, can't be a triphthong, but could be a diphthong
     elif second_vowel is VowelType.CLOSED_WITH_ACCENT:
         word.accent = word.pos
@@ -189,7 +186,7 @@ def nucleus(word: WordProgress):
 
 
 @return_section
-def coda(word: WordProgress):
+def coda(word: WordProgress):  # noqa: C901
     if word.ended or is_vowel(word.char):
         return  # No coda
 
@@ -233,7 +230,7 @@ def coda(word: WordProgress):
         # else it begins in the letter 'y'
         if c2 == 'y':
             if c1 not in 'slrnc':
-                word.next() # move the pointer to the y
+                word.next()  # move the pointer to the y
             return
 
         if digraph in ('gl', 'kl', 'bl', 'vl', 'pl', 'fl', 'tl',
@@ -242,15 +239,15 @@ def coda(word: WordProgress):
 
         word.next()
         return
-    else: # 3rd consonant
-        if word.pos >= word.len - 3: # The word ends with 3 consonants
+    else:  # 3rd consonant
+        if word.pos >= word.len - 3:  # The word ends with 3 consonants
             if c2 == 'y' and c1 in 'slrnc':  # y as vowel
                 return
 
             if c3 == 'y':
                 word.next()
             else:
-                word.next(3) # The word ends with 3 consonants
+                word.next(3)  # The word ends with 3 consonants
             return
 
         # This is not the end of the word
@@ -272,4 +269,3 @@ def coda(word: WordProgress):
             word.next()  # The next syllable starts in c2
         else:
             word.next(2)  # The next syllable starts in c3
-
