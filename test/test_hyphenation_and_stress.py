@@ -46,12 +46,18 @@ def test_hyphenation_of_common_words(word, hyphenated, stressed):
     assert res.stressed == stressed
 
 
-@parametrize_with_words_from([
-    ('Actuáis', 'Ac-tuáis', 2),
-    ('Desagüe', 'De-sa-güe', 2),
-    ('fugu', 'fu-gu', 1),
-])
-def test_special_words(word, hyphenated, stressed):
+@pytest.mark.parametrize(
+    'word, hyphenated, stressed, accented',
+    [
+        ('Actuáis', 'Ac-tuáis', 2, 4),
+        ('Construcción', 'Cons-truc-ción', 3, 10),
+        ('Melón', 'Me-lón', 2, 3),
+        ('Desagüe', 'De-sa-güe', 2, None),
+        ('fugu', 'fu-gu', 1, None),
+    ]
+)
+def test_special_words(word, hyphenated, stressed, accented):
     res = syllabify_with_details(word)
     assert res.hyphenated == hyphenated
     assert res.stressed == stressed
+    assert res.accented == accented

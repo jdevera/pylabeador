@@ -148,6 +148,7 @@ def nucleus(word: WordProgress):
 
         # The previous is closed
         if second_vowel.has_accent:
+            word.accent = word.pos
             word.stress_found = True
         word.next()
 
