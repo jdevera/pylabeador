@@ -6,12 +6,27 @@
 ![](https://img.shields.io/pypi/dm/pylabeador)
 # Pylabeador: Automatic Syllabification of Spanish Words
 
+# Install
+
+```
+pip install pylabeador
+```
+
+# Use
+
+You can use it as a Python library:
 ```python
 >>> import pylabeador
 >>> pylabeador.syllabify("silabear")
 ['si', 'la', 'be', 'ar']
 ```
 
+And you can use it as a command line tool:
+
+```sh
+$ pylabeador interesante
+in-te-re-san-te
+```
 # Accuracy
 
 Automatic syllabification without additional lexical or and semantic *knowledge* of the words can only go so far.  This syllabifier does not have such knowledge. Because of this, words such as *transatlántico*, whose correct hyphenation is *trans-a-tlán-ti-co* or even *trans-at-lán-ti-co*, end up being divided here into *tran-sa-tlán-ti-co*.  To hyphenate this correctly, it is necessary to know that the word without the prefix exists in Spanish with similar semantics to the one of the original word. This is better and further explained in this paper: [Automatic syllabification for Spanish using lemmatization and derivation to solve the prefix’s prominence issue](http://dx.doi.org/10.1016/j.eswa.2013.06.056)
