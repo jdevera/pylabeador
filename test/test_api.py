@@ -9,5 +9,5 @@ def test_syllabify():
 def test_syllabify_with_details():
     res = pylabeador.syllabify_with_details("tenacidad")
     assert res.hyphenated == "te-na-ci-dad"
-    assert res.stressed == 4
+    assert res.stressed == 3
     assert not res.accented

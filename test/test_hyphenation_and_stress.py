@@ -28,35 +28,43 @@ def ids_func(val):
 
 
 def spanish_common_words():
-    with data_file_open("spanish-hyphens.txt") as fin:
+    with data_file_open("spanish-hyphens2.txt") as fin:
         for line in fin:
-            word, hyphenation, stressed = line.strip().split()
-            yield word, hyphenation, int(stressed)
+            if line.startswith("#"):
+                continue
+            word, hyphenation, stressed, accent_pos = line.strip().split()
+            try:
+                accent_pos = int(accent_pos)
+            except:
+                accent_pos = None
+            yield word, hyphenation, int(stressed), accent_pos
 
 
 def parametrize_with_words_from(source):
-    return pytest.mark.parametrize('word, hyphenated, stressed', source, ids=ids_func)
+    return pytest.mark.parametrize('word, hyphenated, stressed, accent_pos', source, ids=ids_func)
 
 
 @parametrize_with_words_from(spanish_common_words())
-def test_hyphenation_of_common_words(word, hyphenated, stressed):
-    res = syllabify_with_details(word)
+def test_hyphenation_of_common_words(word, hyphenated, stressed, accent_pos):
+    res = syllabify_with_details(word)    
+    accented = accent_pos - 1 if accent_pos is not None else None
     assert res.hyphenated == hyphenated
-    assert res.stressed == stressed
+    assert res.stressed == stressed - 1
+    assert res.accented == accented
 
 
-@pytest.mark.parametrize(
-    'word, hyphenated, stressed, accented',
+@parametrize_with_words_from(
     [
-        ('Actuáis', 'Ac-tuáis', 2, 4),
-        ('Construcción', 'Cons-truc-ción', 3, 10),
-        ('Melón', 'Me-lón', 2, 3),
+        ('Actuáis', 'Ac-tuáis', 2, 5),
+        ('Construcción', 'Cons-truc-ción', 3, 11),
+        ('Melón', 'Me-lón', 2, 4),
         ('Desagüe', 'De-sa-güe', 2, None),
         ('fugu', 'fu-gu', 1, None),
     ],
 )
-def test_special_words(word, hyphenated, stressed, accented):
+def test_special_words(word, hyphenated, stressed, accent_pos):
     res = syllabify_with_details(word)
+    accented = accent_pos - 1 if accent_pos is not None else None
     assert res.hyphenated == hyphenated
-    assert res.stressed == stressed
+    assert res.stressed == stressed - 1
     assert res.accented == accented
