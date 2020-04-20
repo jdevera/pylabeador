@@ -44,7 +44,7 @@ def hyphenate(word: str) -> WordProgress:
 
         num_syl = len(word.syllables)
         if word.stress_found and word.stressed is None:
-            word.stressed = num_syl
+            word.stressed = num_syl - 1
 
     # If the word does not have a graphical accent, then find the stressed
     # syllable according to the Spanish rules
@@ -52,16 +52,16 @@ def hyphenate(word: str) -> WordProgress:
         num_syl = len(word.syllables)
         # If the word has only one syllable, that's the one!
         if num_syl == 1:
-            word.stressed = num_syl
+            word.stressed = num_syl - 1
         else:
             end = word[-1]
             prev = word[-2]
             # Ends in vowel (including y) or n or s
             if is_vowel(end) or end in 'yns' and is_vowel(prev):
-                word.stressed = num_syl - 1
+                word.stressed = num_syl - 2
             else:
-                word.stressed = num_syl
-    word.syllables[word.stressed - 1].stressed = True
+                word.stressed = num_syl - 1
+    word.syllables[word.stressed].stressed = True
     word.stress_found = True
     return word
 
