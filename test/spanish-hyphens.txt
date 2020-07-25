@@ -1184,7 +1184,7 @@ llevas lle-vas 0 -
 banda ban-da 0 -
 quedarme que-dar-me 1 -
 habéis ha-béis 1 3
-marcha marc-ha 0 -
+marcha mar-cha 0 -
 luces lu-ces 0 -
 estuviera es-tu-vie-ra 2 -
 crimen cri-men 0 -
@@ -3148,7 +3148,7 @@ sucediendo su-ce-dien-do 2 -
 tocando to-can-do 1 -
 abandonado a-ban-do-na-do 3 -
 petróleo pe-tró-le-o 1 4
-archivos arc-hi-vos 1 -
+archivos ar-chi-vos 1 -
 versión ver-sión 1 5
 pozo po-zo 0 -
 echado e-cha-do 1 -
@@ -3418,7 +3418,7 @@ conté con-té 1 4
 actual ac-tual 1 -
 secretaria sec-re-ta-ria 2 -
 mejorar me-jo-rar 2 -
-rancho ranc-ho 0 -
+rancho ran-cho 0 -
 trate tra-te 0 -
 significado sig-ni-fi-ca-do 3 -
 famosa fa-mo-sa 1 -
@@ -3793,7 +3793,7 @@ tomaste to-mas-te 1 -
 barra ba-rra 0 -
 enfermos en-fer-mos 1 -
 engañar en-ga-ñar 2 -
-marchar marc-har 1 -
+marchar mar-char 1 -
 cargar car-gar 1 -
 intentamos in-ten-ta-mos 2 -
 desaparece de-sa-pa-re-ce 3 -
@@ -3898,7 +3898,7 @@ cretino cre-ti-no 1 -
 recursos re-cur-sos 1 -
 métete mé-te-te 0 1
 buscaré bus-ca-ré 2 6
-archivo arc-hi-vo 1 -
+archivo ar-chi-vo 1 -
 letras le-tras 0 -
 poeta po-e-ta 1 -
 mantenga man-ten-ga 1 -
@@ -4542,7 +4542,7 @@ hubiéramos hu-bié-ra-mos 1 4
 gatillo ga-ti-llo 1 -
 pida pi-da 0 -
 vendió ven-dió 1 5
-mancha manc-ha 0 -
+mancha man-cha 0 -
 próximos pró-xi-mos 0 2
 sufre su-fre 0 -
 giro gi-ro 0 -
@@ -4635,7 +4635,7 @@ misa mi-sa 0 -
 carbón car-bón 1 4
 grosero gro-se-ro 1 -
 queja que-ja 0 -
-marcharse marc-har-se 1 -
+marcharse mar-char-se 1 -
 cristiano cris-tia-no 1 -
 misterioso mis-te-rio-so 2 -
 rapido ra-pi-do 1 -
@@ -5011,7 +5011,7 @@ alianza a-lian-za 1 -
 dedica de-di-ca 1 -
 preferido pre-fe-ri-do 2 -
 criado cria-do 0 -
-marcho marc-ho 0 -
+marcho mar-cho 0 -
 acompañe a-com-pa-ñe 2 -
 ida i-da 0 -
 armados ar-ma-dos 1 -
@@ -5205,7 +5205,7 @@ jungla jun-gla 0 -
 espectacular es-pec-ta-cu-lar 4 -
 confesar con-fe-sar 2 -
 bobo bo-bo 0 -
-marchó marc-hó 1 5
+marchó mar-chó 1 5
 soltera sol-te-ra 1 -
 pasaremos pa-sa-re-mos 2 -
 sabés sa-bés 1 3
@@ -5234,7 +5234,7 @@ cortinas cor-ti-nas 1 -
 toneladas to-ne-la-das 2 -
 sentiría sen-ti-rí-a 2 6
 irak i-rak 1 -
-marcharme marc-har-me 1 -
+marcharme mar-char-me 1 -
 adolescente a-do-les-cen-te 3 -
 interesantes in-te-re-san-tes 3 -
 azar a-zar 1 -
@@ -5596,7 +5596,7 @@ esperes es-pe-res 1 -
 coco co-co 0 -
 moscas mos-cas 0 -
 escocia es-co-cia 1 -
-manchas manc-has 0 -
+manchas man-chas 0 -
 andré an-dré 1 4
 afueras a-fue-ras 1 -
 rompí rom-pí 1 4
@@ -6047,7 +6047,7 @@ comeré co-me-ré 2 5
 conseguirás con-se-gui-rás 3 9
 buda bu-da 0 -
 rio rio 0 -
-salchichas salc-hi-chas 1 -
+salchichas sal-chi-chas 1 -
 agarró a-ga-rró 2 5
 cuchillos cu-chi-llos 1 -
 boxeo bo-xe-o 1 -
@@ -6131,7 +6131,7 @@ pleno ple-no 0 -
 factura fac-tu-ra 1 -
 ardiente ar-dien-te 1 -
 casaré ca-sa-ré 2 5
-salchicha salc-hi-cha 1 -
+salchicha sal-chi-cha 1 -
 billetera bi-lle-te-ra 2 -
 comunes co-mu-nes 1 -
 extrañé ex-tra-ñé 2 6
@@ -6176,7 +6176,7 @@ cambiaron cam-bia-ron 1 -
 pacto pac-to 0 -
 patán pa-tán 1 3
 apagado a-pa-ga-do 2 -
-marchado marc-ha-do 1 -
+marchado mar-cha-do 1 -
 temblando tem-blan-do 1 -
 empezaremos em-pe-za-re-mos 3 -
 ignorante ig-no-ran-te 2 -
@@ -6725,7 +6725,7 @@ comerciales co-mer-cia-les 2 -
 entiendas en-tien-das 1 -
 papás pa-pás 1 3
 secuestrado se-cues-tra-do 2 -
-gancho ganc-ho 0 -
+gancho gan-cho 0 -
 furgoneta fur-go-ne-ta 2 -
 sentiste sen-tis-te 1 -
 comiste co-mis-te 1 -
@@ -7071,7 +7071,7 @@ pascua pas-cua 0 -
 busquemos bus-que-mos 1 -
 aceptaré a-cep-ta-ré 3 7
 colgando col-gan-do 1 -
-márchate márc-ha-te 0 1
+márchate már-cha-te 0 1
 guardas guar-das 0 -
 masas ma-sas 0 -
 camarote ca-ma-ro-te 2 -
@@ -7476,7 +7476,7 @@ suelten suel-ten 0 -
 obstante obs-tan-te 1 -
 subí su-bí 1 3
 basa ba-sa 0 -
-cancha canc-ha 0 -
+cancha can-cha 0 -
 tardado tar-da-do 1 -
 devuelvo de-vuel-vo 1 -
 fusión fu-sión 1 4
@@ -7495,7 +7495,7 @@ abrázame a-brá-za-me 1 3
 agresión a-gre-sión 2 6
 camello ca-me-llo 1 -
 selección se-lec-ción 2 7
-ancho anc-ho 0 -
+ancho an-cho 0 -
 comunicado co-mu-ni-ca-do 3 -
 rodea ro-de-a 1 -
 hospitalidad hos-pi-ta-li-dad 4 -
@@ -7739,7 +7739,7 @@ reconocí re-co-no-cí 3 7
 ideales i-de-a-les 2 -
 mataran ma-ta-ran 1 -
 defensor de-fen-sor 2 -
-concha conc-ha 0 -
+concha con-cha 0 -
 soñaba so-ña-ba 1 -
 emocionada e-mo-cio-na-da 3 -
 yerno yer-no 0 -
@@ -7939,10 +7939,10 @@ apuntando a-pun-tan-do 2 -
 creyeron cre-ye-ron 1 -
 éxtasis éx-ta-sis 0 0
 iluminación i-lu-mi-na-ción 4 9
-marcharte marc-har-te 1 -
+marcharte mar-char-te 1 -
 sábados sá-ba-dos 0 1
 explorador ex-plo-ra-dor 3 -
-colchón colc-hón 1 5
+colchón col-chón 1 5
 tenerlos te-ner-los 1 -
 feas fe-as 0 -
 preguntaron pre-gun-ta-ron 2 -
@@ -8085,7 +8085,7 @@ rejas re-jas 0 -
 tomada to-ma-da 1 -
 creíamos cre-í-a-mos 1 3
 ático á-ti-co 0 0
-porche porc-he 0 -
+porche por-che 0 -
 finge fin-ge 0 -
 acompañaré a-com-pa-ña-ré 4 9
 ponerla po-ner-la 1 -
@@ -8221,7 +8221,7 @@ visitarme vi-si-tar-me 2 -
 morena mo-re-na 1 -
 casero ca-se-ro 1 -
 entregas en-tre-gas 1 -
-marchas marc-has 0 -
+marchas mar-chas 0 -
 competición com-pe-ti-ción 3 9
 popa po-pa 0 -
 quiza qui-za 0 -
@@ -8377,7 +8377,7 @@ arreglé a-rre-glé 2 6
 delitos de-li-tos 1 -
 tragar tra-gar 1 -
 perdamos per-da-mos 1 -
-lancha lanc-ha 0 -
+lancha lan-cha 0 -
 uvas u-vas 0 -
 ardilla ar-di-lla 1 -
 matarás ma-ta-rás 2 5
@@ -8402,7 +8402,7 @@ grúa grú-a 0 2
 flujo flu-jo 0 -
 haberlos ha-ber-los 1 -
 internado in-ter-na-do 2 -
-marchando marc-han-do 1 -
+marchando mar-chan-do 1 -
 apretado a-pre-ta-do 2 -
 complace com-pla-ce 1 -
 española es-pa-ño-la 2 -
@@ -8478,7 +8478,7 @@ bromea bro-me-a 1 -
 afirma a-fir-ma 1 -
 tacto tac-to 0 -
 sueltes suel-tes 0 -
-marchaos marc-ha-os 1 -
+marchaos mar-cha-os 1 -
 acompañado a-com-pa-ña-do 3 -
 productores pro-duc-to-res 2 -
 monjas mon-jas 0 -
@@ -8605,7 +8605,7 @@ picado pi-ca-do 1 -
 trabajadora tra-ba-ja-do-ra 3 -
 desaparezca de-sa-pa-rez-ca 3 -
 disfrutado dis-fru-ta-do 2 -
-marchen marc-hen 0 -
+marchen mar-chen 0 -
 herramienta he-rra-mien-ta 2 -
 celdas cel-das 0 -
 elija e-li-ja 1 -

@@ -267,7 +267,7 @@ def coda(word: WordProgress):  # noqa: C901
         # separated and they always begin a new syllable.
         # y as a vowel starts a new syllable
         # ch starts a new syllable
-        if c3 in 'lry' or c1 + c2 == 'ch':
+        if c3 in 'lry' or c2 + c3 == 'ch':
             word.next()  # The next syllable starts in c2
         else:
             word.next(2)  # The next syllable starts in c3
