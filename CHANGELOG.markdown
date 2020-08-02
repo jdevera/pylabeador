@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.5.0] - 2020-08-02
+### Fixed
+- Fix incorrect syllable division when the coda is empty and the next syllable starts with cr or cl.
+
 ## [0.4.0] - 2020-07-25
 ### Fixed
 - Fix incorrect syllable division when there is a consonant in the coda and the next syllable starts with "ch".
