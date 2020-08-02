@@ -234,8 +234,8 @@ def coda(word: WordProgress):  # noqa: C901
             return
 
         # fmt: off
-        if digraph in ('gl', 'kl', 'bl', 'vl', 'pl', 'fl', 'tl',
-                       'gr', 'kr', 'br', 'vr', 'pr', 'fr', 'tr', 'dr'):
+        if digraph in ('gl', 'cl', 'kl', 'bl', 'vl', 'pl', 'fl', 'tl',
+                       'gr', 'cr', 'kr', 'br', 'vr', 'pr', 'fr', 'tr', 'dr'):
             return
         # fmt:on
 

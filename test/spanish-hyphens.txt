@@ -723,7 +723,7 @@ estuve es-tu-ve 1 -
 pie pie 0 -
 espere es-pe-re 1 -
 edad e-dad 1 -
-secreto sec-re-to 1 -
+secreto se-cre-to 1 -
 podríamos po-drí-a-mos 1 4
 compañía com-pa-ñí-a 2 6
 tren tren 0 -
@@ -1985,7 +1985,7 @@ entera en-te-ra 1 -
 quedará que-da-rá 2 6
 leo le-o 0 -
 créeme cré-e-me 0 2
-secretos sec-re-tos 1 -
+secretos se-cre-tos 1 -
 pecho pe-cho 0 -
 mentiras men-ti-ras 1 -
 sienta sien-ta 0 -
@@ -2297,7 +2297,7 @@ dejaron de-ja-ron 1 -
 aléjate a-lé-ja-te 1 2
 inteligencia in-te-li-gen-cia 3 -
 curioso cu-rio-so 1 -
-declaración dec-la-ra-ción 3 9
+declaración de-cla-ra-ción 3 9
 dímelo dí-me-lo 0 1
 aburrido a-bu-rri-do 2 -
 artículo ar-tí-cu-lo 1 3
@@ -3116,7 +3116,7 @@ cocinar co-ci-nar 2 -
 helicóptero he-li-cóp-te-ro 2 5
 pasaporte pa-sa-por-te 2 -
 gorda gor-da 0 -
-bicicleta bi-cic-le-ta 2 -
+bicicleta bi-ci-cle-ta 2 -
 cincuenta cin-cuen-ta 1 -
 tíos tí-os 0 1
 falsa fal-sa 0 -
@@ -3291,7 +3291,7 @@ solitario so-li-ta-rio 2 -
 haberse ha-ber-se 1 -
 refugio re-fu-gio 1 -
 empiezo em-pie-zo 1 -
-jesucristo je-suc-ris-to 2 -
+jesucristo je-su-cris-to 2 -
 rubia ru-bia 0 -
 criaturas cria-tu-ras 1 -
 pregúntale pre-gún-ta-le 1 4
@@ -3304,7 +3304,7 @@ expresión ex-pre-sión 2 7
 fiel fiel 0 -
 moscú mos-cú 1 4
 prometiste pro-me-tis-te 2 -
-secretario sec-re-ta-rio 2 -
+secretario se-cre-ta-rio 2 -
 cuartel cuar-tel 1 -
 soñando so-ñan-do 1 -
 ejercicio e-jer-ci-cio 2 -
@@ -3320,7 +3320,7 @@ arrestado a-rres-ta-do 2 -
 identificación i-den-ti-fi-ca-ción 5 12
 viniera vi-nie-ra 1 -
 rastro ras-tro 0 -
-secreta sec-re-ta 1 -
+secreta se-cre-ta 1 -
 díselo dí-se-lo 0 1
 invitación in-vi-ta-ción 3 8
 dejemos de-je-mos 1 -
@@ -3416,7 +3416,7 @@ barón ba-rón 1 3
 incidente in-ci-den-te 2 -
 conté con-té 1 4
 actual ac-tual 1 -
-secretaria sec-re-ta-ria 2 -
+secretaria se-cre-ta-ria 2 -
 mejorar me-jo-rar 2 -
 rancho ran-cho 0 -
 trate tra-te 0 -
@@ -3558,7 +3558,7 @@ sepan se-pan 0 -
 salieron sa-lie-ron 1 -
 reverendo re-ve-ren-do 2 -
 perdidos per-di-dos 1 -
-sacrificio sac-ri-fi-cio 2 -
+sacrificio sa-cri-fi-cio 2 -
 propuesta pro-pues-ta 1 -
 amarillo a-ma-ri-llo 2 -
 logrado lo-gra-do 1 -
@@ -4290,7 +4290,7 @@ enciende en-cien-de 1 -
 civilización ci-vi-li-za-ción 4 10
 burro bu-rro 0 -
 muchísimas mu-chí-si-mas 1 4
-democracia de-moc-ra-cia 2 -
+democracia de-mo-cra-cia 2 -
 gimnasio gim-na-sio 1 -
 sabremos sa-bre-mos 1 -
 egipto e-gip-to 1 -
@@ -4519,7 +4519,7 @@ encontrarán en-con-tra-rán 3 9
 enfermedades en-fer-me-da-des 3 -
 mágico má-gi-co 0 1
 reconocimiento re-co-no-ci-mien-to 4 -
-involucrado in-vo-luc-ra-do 3 -
+involucrado in-vo-lu-cra-do 3 -
 aguanto a-guan-to 1 -
 apagar a-pa-gar 2 -
 darás da-rás 1 3
@@ -4698,7 +4698,7 @@ certeza cer-te-za 1 -
 afecto a-fec-to 1 -
 consuelo con-sue-lo 1 -
 recuerdan re-cuer-dan 1 -
-micrófono mic-ró-fo-no 1 4
+micrófono mi-cró-fo-no 1 4
 eterno e-ter-no 1 -
 riesgos ries-gos 0 -
 vampiros vam-pi-ros 1 -
@@ -4865,7 +4865,7 @@ juzgado juz-ga-do 1 -
 oler o-ler 1 -
 levantado le-van-ta-do 2 -
 pisos pi-sos 0 -
-aclarar ac-la-rar 2 -
+aclarar a-cla-rar 2 -
 conduciendo con-du-cien-do 2 -
 conclusión con-clu-sión 2 8
 meterme me-ter-me 1 -
@@ -5871,7 +5871,7 @@ abro a-bro 0 -
 granero gra-ne-ro 1 -
 coartada co-ar-ta-da 2 -
 ambición am-bi-ción 2 6
-declarar dec-la-rar 2 -
+declarar de-cla-rar 2 -
 celebración ce-le-bra-ción 3 9
 utiliza u-ti-li-za 2 -
 experiencias ex-pe-rien-cias 2 -
@@ -6071,7 +6071,7 @@ explique ex-pli-que 1 -
 patadas pa-ta-das 1 -
 pieles pie-les 0 -
 anuncios a-nun-cios 1 -
-nucleares nuc-le-a-res 2 -
+nucleares nu-cle-a-res 2 -
 tuviéramos tu-vié-ra-mos 1 4
 venían ve-ní-an 1 3
 obedecer o-be-de-cer 3 -
@@ -6205,7 +6205,7 @@ crecen cre-cen 0 -
 cuelga cuel-ga 0 -
 correos co-rre-os 1 -
 establo es-ta-blo 1 -
-declarado dec-la-ra-do 2 -
+declarado de-cla-ra-do 2 -
 bate ba-te 0 -
 norma nor-ma 0 -
 elemento e-le-men-to 2 -
@@ -6244,7 +6244,7 @@ mito mi-to 0 -
 mesas me-sas 0 -
 crucero cru-ce-ro 1 -
 independencia in-de-pen-den-cia 3 -
-declaro dec-la-ro 1 -
+declaro de-cla-ro 1 -
 antiguas an-ti-guas 1 -
 crío crí-o 0 2
 historial his-to-rial 2 -
@@ -6300,7 +6300,7 @@ dejarlos de-jar-los 1 -
 recibiste re-ci-bis-te 2 -
 acostumbrada a-cos-tum-bra-da 3 -
 cerró ce-rró 1 4
-masacre ma-sac-re 1 -
+masacre ma-sa-cre 1 -
 preciosas pre-cio-sas 1 -
 misteriosa mis-te-rio-sa 2 -
 ofrecido o-fre-ci-do 2 -
@@ -6593,7 +6593,7 @@ traía tra-í-a 1 3
 pollos po-llos 0 -
 monja mon-ja 0 -
 atrevas a-tre-vas 1 -
-declaraciones dec-la-ra-cio-nes 3 -
+declaraciones de-cla-ra-cio-nes 3 -
 avanzando a-van-zan-do 2 -
 peinado pei-na-do 1 -
 marcar mar-car 1 -
@@ -7090,7 +7090,7 @@ creyendo cre-yen-do 1 -
 norteamericano nor-te-a-me-ri-ca-no 5 -
 veros ve-ros 0 -
 aparezca a-pa-rez-ca 2 -
-chicle chic-le 0 -
+chicle chi-cle 0 -
 enseñando en-se-ñan-do 2 -
 acordado a-cor-da-do 2 -
 cobertura co-ber-tu-ra 2 -
@@ -7278,7 +7278,7 @@ agarré a-ga-rré 2 5
 disparaste dis-pa-ras-te 2 -
 celestial ce-les-tial 2 -
 comisionado co-mi-sio-na-do 3 -
-ciclo cic-lo 0 -
+ciclo ci-clo 0 -
 descansando des-can-san-do 2 -
 placas pla-cas 0 -
 determinar de-ter-mi-nar 3 -
@@ -7383,7 +7383,7 @@ eventualmente e-ven-tual-men-te 3 -
 desgraciada des-gra-cia-da 2 -
 comeremos co-me-re-mos 2 -
 quienquiera quien-quie-ra 1 -
-declaró dec-la-ró 2 6
+declaró de-cla-ró 2 6
 crueldad cruel-dad 1 -
 ensayos en-sa-yos 1 -
 pala pa-la 0 -
@@ -7636,13 +7636,13 @@ persiguen per-si-guen 1 -
 continuamente con-ti-nua-men-te 3 -
 talentos ta-len-tos 1 -
 alterado al-te-ra-do 2 -
-núcleo núc-le-o 0 1
+núcleo nú-cle-o 0 1
 anfitrión an-fi-trión 2 7
 usaron u-sa-ron 1 -
 aceptan a-cep-tan 1 -
 decido de-ci-do 1 -
 llamarle lla-mar-le 1 -
-hipócrita hi-póc-ri-ta 1 3
+hipócrita hi-pó-cri-ta 1 3
 rehabilitación re-ha-bi-li-ta-ción 5 12
 oía o-í-a 1 1
 forman for-man 0 -
@@ -7759,7 +7759,7 @@ misiones mi-sio-nes 1 -
 conocéis co-no-céis 2 5
 abrid a-brid 1 -
 celebrando ce-le-bran-do 2 -
-declara dec-la-ra 1 -
+declara de-cla-ra 1 -
 sepamos se-pa-mos 1 -
 avanzada a-van-za-da 2 -
 comete co-me-te 1 -
@@ -7814,7 +7814,7 @@ alambre a-lam-bre 1 -
 pantalón pan-ta-lón 2 6
 católico ca-tó-li-co 1 3
 pídele pí-de-le 0 1
-sacrificios sac-ri-fi-cios 2 -
+sacrificios sa-cri-fi-cios 2 -
 misil mi-sil 1 -
 tocarlo to-car-lo 1 -
 fijamente fi-ja-men-te 2 -
@@ -8338,7 +8338,7 @@ portado por-ta-do 1 -
 lanzado lan-za-do 1 -
 utilizando u-ti-li-zan-do 3 -
 causando cau-san-do 1 -
-sacrificar sac-ri-fi-car 3 -
+sacrificar sa-cri-fi-car 3 -
 testificar tes-ti-fi-car 3 -
 firmas fir-mas 0 -
 rendirse ren-dir-se 1 -
@@ -8412,7 +8412,7 @@ destruyendo des-tru-yen-do 2 -
 arruinando a-rrui-nan-do 2 -
 necesarios ne-ce-sa-rios 2 -
 asustan a-sus-tan 1 -
-motocicleta mo-to-cic-le-ta 3 -
+motocicleta mo-to-ci-cle-ta 3 -
 hostia hos-tia 0 -
 perfectas per-fec-tas 1 -
 ocultando o-cul-tan-do 2 -
