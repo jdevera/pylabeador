@@ -55,6 +55,8 @@ def test_hyphenation_of_common_words(word, hyphenated, stressed, accent_pos):
         ("Melón", "Me-lón", 1, 3),
         ("Desagüe", "De-sa-güe", 1, None),
         ("fugu", "fu-gu", 0, None),
+        ("paraguay", "pa-ra-guay", 2, None),
+        ("paraguayo", "pa-ra-gua-yo", 2, None),
     ]
 )
 def test_special_words(word, hyphenated, stressed, accent_pos):

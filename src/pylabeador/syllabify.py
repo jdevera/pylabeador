@@ -54,8 +54,8 @@ def hyphenate(word: str) -> WordProgress:
         else:
             end = word[-1]
             prev = word[-2]
-            # Ends in vowel (including y) or n or s
-            if is_vowel(end) or end in "yns" and is_vowel(prev):
+            # Ends in vowel or n or s (y is treated as consonant for stress rules)
+            if is_vowel(end) or end in "ns" and is_vowel(prev):
                 word.stressed = num_syl - 2
             else:
                 word.stressed = num_syl - 1
@@ -185,6 +185,10 @@ def nucleus(word: WordProgress):  # noqa: C901
     if word.char in "ui":
         word.next()  # Tripthong
 
+    # Special case: 'y' at the end of a word is treated as a consonant
+    if word.char == "y" and word.at_end:
+        word.next()
+
 
 @return_section
 def coda(word: WordProgress):  # noqa: C901
@@ -193,7 +197,7 @@ def coda(word: WordProgress):  # noqa: C901
 
     # If we are at the end of the word, advance the pointer to the end position and bail out. The current consonant was
     # the coda.
-    if word.pos == word.len - 1:  # End of word
+    if word.at_end:  # End of word
         word.next()
         return
 

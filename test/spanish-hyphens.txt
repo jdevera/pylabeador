@@ -44,7 +44,7 @@ ha ha 0 -
 ahora a-ho-ra 1 -
 esta es-ta 0 -
 hay hay 0 -
-estoy es-toy 0 -
+estoy es-toy 1 -
 algo al-go 0 -
 tú tú 0 1
 tengo ten-go 0 -
@@ -2039,7 +2039,7 @@ quítate quí-ta-te 0 2
 fuertes fuer-tes 0 -
 serie se-rie 0 -
 labios la-bios 0 -
-caray ca-ray 0 -
+caray ca-ray 1 -
 intentarlo in-ten-tar-lo 2 -
 desapareció de-sa-pa-re-ció 4 10
 termine ter-mi-ne 1 -
@@ -2490,7 +2490,7 @@ dispara dis-pa-ra 1 -
 clara cla-ra 0 -
 manda man-da 0 -
 deseos de-se-os 1 -
-okay o-kay 0 -
+okay o-kay 1 -
 computadora com-pu-ta-do-ra 3 -
 víctimas víc-ti-mas 0 1
 deme de-me 0 -
@@ -8631,3 +8631,4 @@ afeitar a-fei-tar 2 -
 violentos vio-len-tos 1 -
 lograron lo-gra-ron 1 -
 exitoso e-xi-to-so 2 -
+Paraguay Pa-ra-guay 2 -
