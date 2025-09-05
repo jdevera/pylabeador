@@ -1,4 +1,78 @@
-[tool.black]
-line-length = 127
-skip-string-normalization = true
-target-version = ['py37', 'py38']
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pylabeador"
+description = "Automatic syllabification for Spanish words"
+authors = [{name = "Jacobo de Vera", email = "devel@jacobodevera.com"}]
+license = {text = "GPL-3.0-or-later"}
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Text Processing",
+    "Topic :: Text Processing :: Linguistic",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: Spanish",
+]
+urls = {Homepage = "https://github.com/jdevera/pylabeador"}
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "hatch",
+]
+
+[project.readme]
+file = "README.markdown"
+content-type = "text/markdown"
+
+[project.scripts]
+pylabeador = "pylabeador.__main__:entrypoint"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pylabeador"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/test",
+    "/README.markdown",
+    "/COPYING",
+    "/CHANGELOG.markdown",
+]
+
+[tool.hatch.version]
+path = "src/pylabeador/__version__.py"
+
+[tool.tox]
+envlist = ["py310", "py311", "py312", "py313"]
+
+[tool.tox.env_run_base]
+deps = ["pytest"]
+commands = [["pytest", "test"]]
+
+[tool.pytest.ini_options]
+disable_test_id_escaping_and_forfeit_all_rights_to_community_support = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "C", "N", "UP", "S", "RET"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
