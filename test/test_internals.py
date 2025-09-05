@@ -51,12 +51,12 @@ def test_nucleus():
 )
 def test_uncommon_nucleus(word, syllable_to_check, expected_hyphenation, expected_nucleus):
     from pylabeador.syllabify import hyphenate
-    
+
     # Test the full hyphenation
     result = hyphenate(word)
     hyphenated = "-".join(s.value for s in result.syllables)
     assert hyphenated == expected_hyphenation
-    
+
     # Test the specific syllable's nucleus
     target_syllable = result.syllables[syllable_to_check - 1]  # Convert to 0-based index
     assert target_syllable.nucleus == expected_nucleus
