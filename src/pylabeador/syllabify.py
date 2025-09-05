@@ -1,5 +1,3 @@
-# coding=utf-8
-
 # -------------------------------------------------------------------------------------
 # Copyright (C) 2009 TIP: Text & Information Processing (http://tip.dis.ulpgc.es)
 # Copyright (c) 2020 Jacobo de Vera Hernández
@@ -20,8 +18,8 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
-from .models import WordProgress, VowelType
 from .errors import HyphenatorError
+from .models import VowelType, WordProgress
 from .util import CONSONANTS, is_vowel
 
 CONSONANTS_BAR_Y = CONSONANTS - set("y")
@@ -57,7 +55,7 @@ def hyphenate(word: str) -> WordProgress:
             end = word[-1]
             prev = word[-2]
             # Ends in vowel (including y) or n or s
-            if is_vowel(end) or end in 'yns' and is_vowel(prev):
+            if is_vowel(end) or end in "yns" and is_vowel(prev):
                 word.stressed = num_syl - 2
             else:
                 word.stressed = num_syl - 1
@@ -83,11 +81,11 @@ def onset(word: WordProgress):
 
     if not word.ended and word.one_behind is not None:
         last_two = word.one_behind + word.char
-        if last_two == 'qu' or (last_two == 'gu' and str(word.one_ahead) in 'eiéí'):
+        if last_two == "qu" or (last_two == "gu" and str(word.one_ahead) in "eiéí"):
             # qu is always in the onset
             # gu is only in the onset if it is followed by i or e
             word.next()
-        elif last_two == 'gü':  # not gu
+        elif last_two == "gü":  # not gu
             # gü is always in the onset
             word.next()
 
@@ -99,7 +97,7 @@ def nucleus(word: WordProgress):  # noqa: C901
     if word.ended:
         return
 
-    if word.char == 'y':
+    if word.char == "y":
         word.next()
 
     if word.ended:
@@ -120,7 +118,7 @@ def nucleus(word: WordProgress):  # noqa: C901
 
     #  An h in the nucleus is not enough to determine whether this is a diphtong, and thus we need to
     #  continue in the nucleus, like in prohi-bir, or it is a new syllable, like in a-ho-ra.
-    found_h = word.char == 'h'
+    found_h = word.char == "h"
     if found_h:
         word.next()
 
@@ -129,7 +127,10 @@ def nucleus(word: WordProgress):  # noqa: C901
 
     # If we have not moved forward, it might mean we have strange characters in the word
     if start_pos == word.pos:
-        raise HyphenatorError("Expected to move forward in first stage of nucleus. Perhaps invalid chars?", word)
+        raise HyphenatorError(
+            "Expected to move forward in first stage of nucleus. Perhaps invalid chars?",
+            word,
+        )
 
     previous = vowel_type
 
@@ -163,7 +164,7 @@ def nucleus(word: WordProgress):  # noqa: C901
     # Closed vowel
     elif second_vowel is VowelType.CLOSED:
         if is_vowel(word.one_ahead):
-            # Vowel - Closed vowel - vowel can never be a tripthong. This syllable is over and the currently evaluated
+            # Vowel - Closed vowel - vowel can never be a triphthong. This syllable is over, and the currently evaluated
             # second vowel belongs to the next syllable
             if found_h:
                 word.previous()
@@ -181,7 +182,7 @@ def nucleus(word: WordProgress):  # noqa: C901
     if word.ended:
         return
 
-    if word.char in 'ui':
+    if word.char in "ui":
         word.next()  # Tripthong
 
 
@@ -204,7 +205,7 @@ def coda(word: WordProgress):  # noqa: C901
     # Current and next are consonants and are at the word, that looks like coda, except if the second is a y, which
     # acts like a vowel and then we'd have a case like above: one consonant between vowels.
     if word.pos >= word.len - 2:
-        if word.one_ahead != 'y':
+        if word.one_ahead != "y":
             # The word ends with 2 consonants
             word.next(2)
         return
@@ -217,19 +218,19 @@ def coda(word: WordProgress):  # noqa: C901
     if is_vowel(c3):
         digraph = c1 + c2
         # ll, ch, and rr start a new syllable
-        if digraph in ('ll', 'ch', 'rr'):
+        if digraph in ("ll", "ch", "rr"):
             return
 
         # cons + h starts a syllable, except sh and rh
-        if c1 not in 'sr' and c2 == 'h':
+        if c1 not in "sr" and c2 == "h":
             return
 
         # If the letter 'y' is preceded by the some
         #      letter 's', 'l', 'r', 'n' or 'c' then
         #      a new syllable begins in the previous consonant
         # else it begins in the letter 'y'
-        if c2 == 'y':
-            if c1 not in 'slrnc':
+        if c2 == "y":
+            if c1 not in "slrnc":
                 word.next()  # move the pointer to the y
             return
 
@@ -240,26 +241,37 @@ def coda(word: WordProgress):  # noqa: C901
         # fmt:on
 
         word.next()
-        return
     else:  # 3rd consonant
         if word.pos >= word.len - 3:  # The word ends with 3 consonants
-            if c2 == 'y' and c1 in 'slrnc':  # y as vowel
+            if c2 == "y" and c1 in "slrnc":  # y as vowel
                 return
 
-            if c3 == 'y':
+            if c3 == "y":
                 word.next()
             else:
                 word.next(3)  # The word ends with 3 consonants
             return
 
         # This is not the end of the word
-        if c2 == 'y' and c1 in 'slrnc':  # y as a vowel
+        if c2 == "y" and c1 in "slrnc":  # y as a vowel
             word.next()
             return
 
         # The groups pt, ct, cn, ps, mn, gn, ft, pn, cz, tz and ts begin a syllable
         # when preceded by other consonant
-        if c2 + c3 in ('pt', 'ct', 'cn', 'ps', 'mn', 'gn', 'ft', 'pn', 'cz', 'tz', 'ts'):
+        if c2 + c3 in (
+            "pt",
+            "ct",
+            "cn",
+            "ps",
+            "mn",
+            "gn",
+            "ft",
+            "pn",
+            "cz",
+            "tz",
+            "ts",
+        ):
             word.next()
             return
 
@@ -267,7 +279,7 @@ def coda(word: WordProgress):  # noqa: C901
         # separated and they always begin a new syllable.
         # y as a vowel starts a new syllable
         # ch starts a new syllable
-        if c3 in 'lry' or c2 + c3 == 'ch':
+        if c3 in "lry" or c2 + c3 == "ch":
             word.next()  # The next syllable starts in c2
         else:
             word.next(2)  # The next syllable starts in c3

@@ -18,7 +18,7 @@
 # -------------------------------------------------------------------------------------
 
 from pylabeador import WordProgress
-from pylabeador.syllabify import onset, nucleus
+from pylabeador.syllabify import nucleus, onset
 
 
 def test_onset():

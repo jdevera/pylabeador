@@ -17,10 +17,11 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
-import os
+import pathlib
+from typing import TextIO
 
 
-def data_file_open(filename):
-    test_dir = os.path.dirname(__file__)
-    path = os.path.join(test_dir, filename)
-    return open(path, 'r')
+def data_file_open(filename) -> TextIO:
+    test_dir = pathlib.Path(__file__).parent
+    path = test_dir / filename
+    return path.open()

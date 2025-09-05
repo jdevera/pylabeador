@@ -20,6 +20,7 @@
 import pytest
 
 from pylabeador import syllabify_with_details
+
 from .utils import data_file_open
 
 
@@ -31,12 +32,12 @@ def spanish_common_words():
     with data_file_open("spanish-hyphens.txt") as fin:
         for line in fin:
             word, hyphenation, stressed, accent_pos = line.strip().split()
-            accent_pos = int(accent_pos) if accent_pos != '-' else None
+            accent_pos = int(accent_pos) if accent_pos != "-" else None
             yield word, hyphenation, int(stressed), accent_pos
 
 
 def parametrize_with_words_from(source):
-    return pytest.mark.parametrize('word, hyphenated, stressed, accent_pos', source, ids=ids_func)
+    return pytest.mark.parametrize("word, hyphenated, stressed, accent_pos", source, ids=ids_func)
 
 
 @parametrize_with_words_from(spanish_common_words())
@@ -49,11 +50,11 @@ def test_hyphenation_of_common_words(word, hyphenated, stressed, accent_pos):
 
 @parametrize_with_words_from(
     [
-        ('Actuáis', 'Ac-tuáis', 1, 4),
-        ('Construcción', 'Cons-truc-ción', 2, 10),
-        ('Melón', 'Me-lón', 1, 3),
-        ('Desagüe', 'De-sa-güe', 1, None),
-        ('fugu', 'fu-gu', 0, None),
+        ("Actuáis", "Ac-tuáis", 1, 4),
+        ("Construcción", "Cons-truc-ción", 2, 10),
+        ("Melón", "Me-lón", 1, 3),
+        ("Desagüe", "De-sa-güe", 1, None),
+        ("fugu", "fu-gu", 0, None),
     ]
 )
 def test_special_words(word, hyphenated, stressed, accent_pos):

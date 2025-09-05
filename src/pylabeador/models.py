@@ -19,16 +19,15 @@
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Optional, List
 
 from .util import is_vowel
 
 
 @dataclass
 class Syllable:
-    onset: str = ''
-    nucleus: str = ''
-    coda: str = ''
+    onset: str = ""
+    nucleus: str = ""
+    coda: str = ""
     accented: bool = False
     stressed: bool = False
 
@@ -40,9 +39,9 @@ class Syllable:
 @dataclass(frozen=True)
 class SyllabifiedWord:
     original: str
-    syllables: List[Syllable]
-    stressed: Optional[int] = None
-    accented: Optional[int] = None
+    syllables: list[Syllable]
+    stressed: int | None = None
+    accented: int | None = None
 
     @property
     def hyphenated(self):
@@ -60,10 +59,10 @@ class WordProgress:
     original_word: str
     pos: int = 0
     len: int = field(init=False, default=0)
-    accent: Optional[int] = None
+    accent: int | None = None
     stress_found: bool = None
-    stressed: Optional[int] = None
-    syllables: List[Syllable] = field(default_factory=list)
+    stressed: int | None = None
+    syllables: list[Syllable] = field(default_factory=list)
     word: str = field(init=False)
 
     def __post_init__(self):
@@ -81,9 +80,10 @@ class WordProgress:
     def one_ahead(self):
         return self.look_ahead(1)
 
-    def look_ahead(self, steps=1):
+    def look_ahead(self, steps=1) -> str | None:
         if self.has_next(steps):
             return self.word[self.pos + steps]
+        return None
 
     @property
     def one_behind(self):
@@ -92,13 +92,18 @@ class WordProgress:
     def look_behind(self, steps=1):
         if self.pos - steps >= 0:
             return self.word[self.pos - steps]
+        return None
 
     @property
     def ended(self):
         return self.pos >= self.len
 
+    @property
+    def at_end(self) -> bool:
+        return self.pos == self.len - 1
+
     def next(self, steps=1):
-        for i in range(steps):
+        for _ in range(steps):
             if not self.has_next():
                 self.pos = self.len
                 return None
@@ -109,6 +114,7 @@ class WordProgress:
         if self.pos > 0:
             self.pos -= 1
             return self.char
+        return None
 
     def has_next(self, steps=1):
         return self.pos + steps < self.len
@@ -118,8 +124,10 @@ class WordProgress:
 
     def check(self):
         if self.stress_found:
-            assert self.syllables[self.stressed - 1].stressed
-            assert len(list(filter(None, (s.stressed for s in self.syllables)))) == 1, self.syllables
+            if not self.syllables[self.stressed - 1].stressed:
+                raise ValueError("Stressed syllable is not stressed")
+            if len(list(filter(None, (s.stressed for s in self.syllables)))) != 1:
+                raise ValueError("Multiple stressed syllables")
 
     def add_syllable(self):
         syllable = Syllable()
@@ -130,26 +138,29 @@ class WordProgress:
     def current_syllable(self):
         if self.syllables:
             return self.syllables[-1]
+        return None
 
     def to_result(self) -> SyllabifiedWord:
-        assert self.ended
-        assert self.stress_found
+        if not self.ended:
+            raise ValueError("Word is not ended")
+        if not self.stress_found:
+            raise ValueError("Stress is not found")
         return SyllabifiedWord(self.original_word, self.syllables, self.stressed, self.accent)
 
 
 class VowelType(Enum):
-    OPEN = 'aeo'
-    OPEN_WITH_ACCENT = 'áéó'
-    CLOSED = 'iuü'
-    CLOSED_WITH_ACCENT = 'íú'
+    OPEN = "aeo"
+    OPEN_WITH_ACCENT = "áéó"
+    CLOSED = "iuü"
+    CLOSED_WITH_ACCENT = "íú"
 
     @classmethod
-    def from_char(cls, c) -> 'VowelType':
-        if not is_vowel(c):
-            raise ValueError(f"{c} is not a vowel")
-        for val in cls:
-            if c in val.value:
-                return val
+    def from_char(cls, c) -> "VowelType":
+        if is_vowel(c):
+            for val in cls:
+                if c in val.value:
+                    return val
+        raise ValueError(f"{c} is not a vowel")
 
     @property
     def has_accent(self):

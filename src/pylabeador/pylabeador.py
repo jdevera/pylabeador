@@ -17,19 +17,17 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
-from typing import List
 
-from .models import SyllabifiedWord
 from . import syllabify as _syllabify
+from .models import SyllabifiedWord
 from .util import check_word_for_spanish_chars
 
 
 def syllabify_with_details(word: str) -> SyllabifiedWord:
     check_word_for_spanish_chars(word)
-    res = _syllabify.hyphenate(word).to_result()
-    return res
+    return _syllabify.hyphenate(word).to_result()
 
 
-def syllabify(word: str) -> List[str]:
+def syllabify(word: str) -> list[str]:
     res = syllabify_with_details(word)
     return [syl.value for syl in res.syllables]

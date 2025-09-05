@@ -17,8 +17,8 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
-VOWELS = set('aáeéiíoóuúü')
-CONSONANTS = set('bcdfghjklmnñpqrstvwxyz')
+VOWELS = set("aáeéiíoóuúü")
+CONSONANTS = set("bcdfghjklmnñpqrstvwxyz")
 LETTERS = VOWELS.union(CONSONANTS)
 
 
@@ -31,10 +31,10 @@ def check_word_for_spanish_chars(word):
 
     bad_letters = set(word.lower()) - LETTERS
     if bad_letters:
-        raise HyphenatorError("The word {} contains invalid letters in Spanish: {}".format(word, bad_letters))
+        raise HyphenatorError(f"The word {word} contains invalid letters in Spanish: {bad_letters}")
     if "ü" in word:
         pos = word.find("ü")
-        follows_g = pos > 0 and word[pos - 1] == 'g'
-        folowed_by_ei = pos + 1 < len(word) and word[pos + 1] in 'eiéí'
+        follows_g = pos > 0 and word[pos - 1] == "g"
+        folowed_by_ei = pos + 1 < len(word) and word[pos + 1] in "eiéí"
         if not follows_g or not folowed_by_ei:
             raise HyphenatorError(f"The word {word} does not seem to be Spanish, where ü can only appear in güe or güi")

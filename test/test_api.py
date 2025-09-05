@@ -3,7 +3,7 @@ import pylabeador
 
 def test_syllabify():
     res = pylabeador.syllabify("tenacidad")
-    assert res == ['te', 'na', 'ci', 'dad']
+    assert res == ["te", "na", "ci", "dad"]
 
 
 def test_syllabify_with_details():

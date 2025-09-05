@@ -20,20 +20,19 @@
 import argparse
 import sys
 
-from . import syllabify_with_details, VERSION
+from . import __version__, syllabify_with_details
 
 
 def parse_args(argv):
     parser = argparse.ArgumentParser(description="Syllabify Spanish words")
-    parser.add_argument("words", metavar='word', nargs=argparse.ONE_OR_MORE)
-    parser.add_argument("--version", action='version', version=f'%(prog)s {VERSION}')
+    parser.add_argument("words", metavar="word", nargs=argparse.ONE_OR_MORE)
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
 
-    args = parser.parse_args(argv[1:])
-    return args
+    return parser.parse_args(argv[1:])
 
 
 def main(argv=None):
-    """ Run this program """
+    """Run this program"""
     if argv is None:
         argv = sys.argv
     args = parse_args(argv)
@@ -49,5 +48,5 @@ def entrypoint():
     sys.exit(main(sys.argv) or 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     entrypoint()
