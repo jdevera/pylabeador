@@ -1,4 +1,4 @@
-[![](https://img.shields.io/github/workflow/status/jdevera/pylabeador/Python%20package)](https://github.com/jdevera/pylabeador/actions?query=workflow%3A%22Python+package%22+branch%3Amaster)
+[![](https://img.shields.io/github/actions/workflow/status/jdevera/pylabeador/pythonpackage.yml?branch=main)](https://github.com/jdevera/pylabeador/actions?query=workflow%3A%22Python+package%22+branch%3Amain)
 [![codecov](https://codecov.io/gh/jdevera/pylabeador/branch/master/graph/badge.svg)](https://codecov.io/gh/jdevera/pylabeador)
 ![](https://img.shields.io/pypi/pyversions/pylabeador)
 [![](https://img.shields.io/pypi/v/pylabeador)](https://pypi.org/project/pylabeador/)
