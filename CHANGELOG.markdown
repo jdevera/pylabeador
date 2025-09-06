@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.6.0] - 2024-12-19
+### Fixed
+- Fix incorrect stress assignment for words ending in 'y'. Words like "Paraguay" and "estoy" now correctly report the stressed syllable position. (Issue #13)
+
 ## [0.5.0] - 2020-08-02
 ### Fixed
 - Fix incorrect syllable division when the coda is empty and the next syllable starts with cr or cl.
