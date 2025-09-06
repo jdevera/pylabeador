@@ -98,12 +98,18 @@ def nucleus(word: WordProgress):  # noqa: C901
         return
 
     if word.char == "y":
-        word.next()
+        # Check if 'y' should be treated as vowel in this context
+        if is_vowel(word.char, word.word, word.pos):
+            # 'y' is acting as vowel, continue with normal vowel processing
+            pass
+        else:
+            # 'y' is acting as consonant, move past it
+            word.next()
 
     if word.ended:
         return
 
-    if not is_vowel(word.char):
+    if not is_vowel(word.char, word.word, word.pos):
         raise HyphenatorError("Nucleus expects a vowel!", word)
 
     vowel_type: VowelType = VowelType.from_char(word.char)
@@ -134,7 +140,7 @@ def nucleus(word: WordProgress):  # noqa: C901
 
     previous = vowel_type
 
-    if not is_vowel(word.char):
+    if not is_vowel(word.char, word.word, word.pos):
         return
 
     # Second vowel:
@@ -163,7 +169,7 @@ def nucleus(word: WordProgress):  # noqa: C901
 
     # Closed vowel
     elif second_vowel is VowelType.CLOSED:
-        if is_vowel(word.one_ahead):
+        if word.one_ahead and is_vowel(word.one_ahead, word.word, word.pos + 1):
             # Vowel - Closed vowel - vowel can never be a triphthong. This syllable is over, and the currently evaluated
             # second vowel belongs to the next syllable
             if found_h:
@@ -192,7 +198,7 @@ def nucleus(word: WordProgress):  # noqa: C901
 
 @return_section
 def coda(word: WordProgress):  # noqa: C901
-    if word.ended or is_vowel(word.char):
+    if word.ended or is_vowel(word.char, word.word, word.pos):
         return  # No coda
 
     # If we are at the end of the word, advance the pointer to the end position and bail out. The current consonant was
@@ -203,7 +209,7 @@ def coda(word: WordProgress):  # noqa: C901
 
     # If there is only a consonant between vowels, it belongs to the following syllable
     # If the next letter is a vowel, then this consonant is not part of the coda
-    if word.has_next() and is_vowel(word.one_ahead):
+    if word.has_next() and is_vowel(word.one_ahead, word.word, word.pos + 1):
         return
 
     # Current and next are consonants and are at the word, that looks like coda, except if the second is a y, which
@@ -219,7 +225,7 @@ def coda(word: WordProgress):  # noqa: C901
     c2 = word.look_ahead(1)
     c3 = word.look_ahead(2)
 
-    if is_vowel(c3):
+    if c3 and is_vowel(c3, word.word, word.pos + 2):
         digraph = c1 + c2
         # ll, ch, and rr start a new syllable
         if digraph in ("ll", "ch", "rr"):

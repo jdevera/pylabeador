@@ -156,6 +156,9 @@ class VowelType(Enum):
 
     @classmethod
     def from_char(cls, c) -> "VowelType":
+        if c.lower() == "y":
+            # 'y' when acting as vowel behaves like 'i' (closed vowel)
+            return cls.CLOSED
         if is_vowel(c):
             for val in cls:
                 if c in val.value:
