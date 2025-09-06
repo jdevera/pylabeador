@@ -24,20 +24,30 @@ from pylabeador import syllabify_with_details
 from .utils import data_file_open
 
 
-def ids_func(val):
-    return f"{str(val).replace('-', '~')}"
+def lines_from(filename):
+    with data_file_open(filename) as fin:
+        for line in fin:
+            clean_line = line.strip()
+            if not clean_line or clean_line.startswith("#"):
+                continue
+            yield clean_line
 
 
 def spanish_common_words():
-    with data_file_open("spanish-hyphens.txt") as fin:
-        for line in fin:
-            word, hyphenation, stressed, accent_pos = line.strip().split()
-            accent_pos = int(accent_pos) if accent_pos != "-" else None
-            yield word, hyphenation, int(stressed), accent_pos
+    for line in lines_from("spanish-hyphens.txt"):
+        word, hyphenation, stressed, accent_pos = line.split()
+        accent_pos = int(accent_pos) if accent_pos != "-" else None
+        yield word, hyphenation, int(stressed), accent_pos
 
 
 def parametrize_with_words_from(source):
-    return pytest.mark.parametrize("word, hyphenated, stressed, accent_pos", source, ids=ids_func)
+    return pytest.mark.parametrize(
+        "word, hyphenated, stressed, accent_pos",
+        (
+            pytest.param(word, hyphenation, stressed, accent_pos, id=word)
+            for word, hyphenation, stressed, accent_pos in source
+        ),
+    )
 
 
 @parametrize_with_words_from(spanish_common_words())

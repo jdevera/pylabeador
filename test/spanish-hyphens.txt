@@ -1,3 +1,15 @@
+# ---------------------------------------------------------------------------
+# Spanish words test suite
+# ---------------------------------------------------------------------------
+# Format:
+# [word] [hyphenated] [stress] [accent]
+#
+# - word: The full words
+# - hypenated: The word split in syllables, separated by hyphens
+# - stress: The index of the stress syllable (0-based)
+# - accent: The position of the accent in the word (0-based)
+# ---------------------------------------------------------------------------
+
 y y 0 -
 de de 0 -
 que que 0 -
