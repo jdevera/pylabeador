@@ -1,0 +1,94 @@
+[tools]
+python = "3.13"
+uv = "latest"
+
+[env]
+_.file = { path = ".env", redact = true }
+
+[tasks.clean]
+description = "Remove build artifacts and distribution files"
+run = "rm -rf dist build"
+
+[tasks.build]
+description = "Build source and wheel distributions"
+depends = ["clean"]
+run = "uv build"
+
+[tasks.test]
+description = "Run the test suite with pytest"
+env = { PYTHONPATH = "src" }
+run = "uv run pytest test"
+
+[tasks.lint]
+description = "Run linting checks"
+run = "uv run ruff check src/ test/"
+
+[tasks.format]
+description = "Format code with ruff"
+run = "uv run ruff format src/ test/"
+
+[tasks.format-check]
+description = "Check code formatting with ruff"
+run = "uv run ruff format --check src/ test/"
+
+[tasks.ci]
+description = "Run continuous integration tasks"
+depends = ["build", "format-check", "lint", "test"]
+
+[tasks.bump]
+description = "Bump version and commit changes"
+usage = '''
+arg "version" "Version number to bump to"
+'''
+run = '''
+echo "__version__ = \"$usage_version\"" > src/pylabeador/__version__.py
+git add src/pylabeador/__version__.py
+git commit -m "Bump version to $usage_version"
+'''
+
+[tasks.tag]
+description = "Create a git tag with the current version"
+run = "version=$(uv run hatch version) && git tag \"v$version\""
+
+[tasks.publish-test]
+description = "Publish to test PyPI (requires TEST_PYPI_TOKEN)"
+run = '''
+if [[ -z $TEST_PYPI_TOKEN ]]; then
+  echo "Set the token for the test site as \$TEST_PYPI_TOKEN"
+  exit 1
+fi
+echo "Uploading to test site"
+uv publish --publish-url https://test.pypi.org/legacy/ --token "$TEST_PYPI_TOKEN"
+'''
+
+[tasks.publish]
+description = "Publish to PyPI (requires REAL_PYPI_TOKEN)"
+confirm = "Are you sure you want to publish to PyPI?"
+run = '''
+if [[ -z $REAL_PYPI_TOKEN ]]; then
+  echo "Set the token for the REAL PyPI site as \$REAL_PYPI_TOKEN"
+  exit 1
+fi
+echo "Uploading to PyPI"
+uv publish --token "$REAL_PYPI_TOKEN"
+'''
+
+[tasks.publish-check]
+description = "Check if the package is ready to be published (is the tip a version tag and is it the same the version in the code?)"
+run = '''
+git_tag=$(git tag --points-at HEAD)
+if [[ -z $git_tag ]]; then
+  echo "The tip of the current branch is not a version tag"
+  exit 1
+fi
+version=$(uv run hatch version)
+if [[ $git_tag != v$version ]]; then
+  echo "The version in the code ($version) is not the same as the version in the tag ($git_tag)"
+  exit 1
+fi
+echo "The package is ready to be published"
+'''
+
+[tasks.release]
+description = "Complete release process: bump, tag, and publish"
+depends = ["bump", "tag", "publish"]
