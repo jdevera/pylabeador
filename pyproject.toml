@@ -23,8 +23,11 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Natural Language :: Spanish",
 ]
-urls = {Homepage = "https://github.com/jdevera/pylabeador"}
 dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/jdevera/pylabeador"
+Changelog = "https://github.com/jdevera/pylabeador/blob/main/CHANGELOG.markdown"
 
 [project.optional-dependencies]
 dev = [
