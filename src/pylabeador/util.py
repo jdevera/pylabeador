@@ -21,36 +21,20 @@ VOWELS = set("aáeéiíoóuúü")
 CONSONANTS = set("bcdfghjklmnñpqrstvwxyz")
 LETTERS = VOWELS.union(CONSONANTS)
 
-
-def is_y_vowel(word: str, pos: int) -> bool:
-    """
-    Determine if 'y' at given position should be treated as a vowel.
-
-    Refined rule for Spanish:
-    - 'y' acts as CONSONANT when followed by a vowel
-    - 'y' acts as VOWEL otherwise (including when followed by consonant or at word boundaries)
-    """
-    if pos < 0 or pos >= len(word) or word[pos].lower() != "y":
-        return False
-
-    char_after = word[pos + 1].lower() if pos < len(word) - 1 else None
-    after_is_vowel = char_after is not None and char_after in VOWELS
-
-    # Rule: y followed by vowel = consonant (y+vowel cluster like "yu", "ye")
-    if after_is_vowel:
-        return False
-
-    # Otherwise: y = vowel
-    return True
+_NOT_PASSED = "-N/A-"
 
 
-def is_vowel(v: str | None, word: str | None = None, pos: int | None = None):
+def is_vowel(v: str | None, letter_after: str | None = _NOT_PASSED):
     """
     Check if character is a vowel.
     For 'y', uses context-aware detection if word and pos are provided.
+    - 'y' acts as CONSONANT when followed by a vowel
+    - 'y' acts as VOWEL otherwise (including when followed by consonant or at word boundaries)
     """
-    if v is not None and v.lower() == "y" and word is not None and pos is not None:
-        return is_y_vowel(word, pos)
+    if v == "y":
+        if letter_after == _NOT_PASSED:
+            return False
+        return letter_after not in VOWELS
     return v in VOWELS
 
 

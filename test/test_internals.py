@@ -20,7 +20,7 @@ import pytest
 
 from pylabeador import WordProgress
 from pylabeador.syllabify import nucleus, onset
-from pylabeador.util import is_vowel, is_y_vowel
+from pylabeador.util import is_vowel
 
 
 def test_onset():
@@ -63,58 +63,53 @@ def test_uncommon_nucleus(word, syllable_to_check, expected_hyphenation, expecte
     assert target_syllable.nucleus == expected_nucleus
 
 
+def do_test_is_y_vowel(word, expected):
+    y_pos = word.find("y")
+    assert y_pos != -1
+    char_after = word[y_pos + 1] if y_pos < len(word) - 1 else None
+    assert is_vowel("y", char_after) is expected
+
+
 class TestIsYVowelFunction:
     """Test the is_y_vowel utility function"""
 
     @pytest.mark.parametrize(
-        "word, pos",
+        "word, expected",
         [
-            ("bypass", 1),
-            ("byte", 1),
+            ("bypass", True),
+            ("byte", True),
         ],
     )
-    def test_y_between_consonants_is_vowel(self, word, pos):
+    def test_y_between_consonants_is_vowel(self, word, expected):
         """'y' between consonants should be treated as vowel"""
-        assert is_y_vowel(word, pos) is True
+        do_test_is_y_vowel(word, expected)
 
     @pytest.mark.parametrize(
-        "word, pos",
+        "word, expected",
         [
-            ("curry", 4),
-            ("muy", 2),
-            ("estoy", 4),
+            ("curry", True),
+            ("muy", True),
+            ("estoy", True),
         ],
     )
-    def test_y_at_word_end_is_vowel(self, word, pos):
+    def test_y_at_word_end_is_vowel(self, word, expected):
         """'y' at word end should be treated as vowel"""
-        assert is_y_vowel(word, pos) is True  # end of word
+        do_test_is_y_vowel(word, expected)
 
     @pytest.mark.parametrize(
-        "word, pos",
+        "word, expected",
         [
-            ("mayor", 2),
-            ("ayer", 1),
-            ("payaso", 2),
-            ("yeso", 0),
-            ("playa", 3),
-            ("cónyuge", 4),
+            ("mayor", False),
+            ("ayer", False),
+            ("payaso", False),
+            ("yeso", False),
+            ("playa", False),
+            ("cónyuge", False),
         ],
     )
-    def test_y_followed_by_vowel_is_consonant(self, word, pos):
+    def test_y_followed_by_vowel_is_consonant(self, word, expected):
         """'y' followed by vowel should be treated as consonant"""
-        assert is_y_vowel(word, pos) is False
-
-    @pytest.mark.parametrize(
-        "word, pos",
-        [
-            ("mayo", -1),  # invalid position
-            ("mayo", 10),  # invalid position
-            ("mesa", 1),  # non-'y' character
-        ],
-    )
-    def test_y_edge_cases(self, word, pos):
-        """Test edge cases for 'y' detection"""
-        assert is_y_vowel(word, pos) is False
+        do_test_is_y_vowel(word, expected)
 
     @pytest.mark.parametrize(
         "word, pos",
@@ -125,7 +120,8 @@ class TestIsYVowelFunction:
     )
     def test_y_with_context_as_vowel(self, word, pos):
         """Test 'y' with context where it should be vowel"""
-        assert is_vowel("y", word, pos) is True
+        char_after = word[pos + 1] if pos < len(word) - 1 else None
+        assert is_vowel("y", char_after) is True
 
     @pytest.mark.parametrize(
         "word, pos",
@@ -137,7 +133,7 @@ class TestIsYVowelFunction:
     )
     def test_y_with_context_as_consonant(self, word, pos):
         """Test 'y' with context where it should be consonant"""
-        assert is_vowel("y", word, pos) is False
+        assert is_vowel("y", word[pos + 1]) is False
 
     @pytest.mark.parametrize("char", ["a", "e", "i", "o", "u"])
     def test_backward_compatibility_regular_vowels(self, char):
