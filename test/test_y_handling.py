@@ -50,3 +50,17 @@ class TestYSillabification:
     def test_y_complex_cases(self, word, expected):
         """More complex cases with 'y' as vowel"""
         assert pylabeador.syllabify_with_details(word).hyphenated == expected
+
+
+class TestYStressDetection:
+    @pytest.mark.parametrize(
+        ["word", "expected_stressed"],
+        [
+            ("caray", 1),
+            ("estoy", 1),
+            ("whisky", 0),
+            ("curry", 0),
+        ],
+    )
+    def test_y_stress_detection(self, word, expected_stressed):
+        assert pylabeador.syllabify_with_details(word).stressed == expected_stressed

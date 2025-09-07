@@ -8,6 +8,10 @@
 # - hypenated: The word split in syllables, separated by hyphens
 # - stress: The index of the stress syllable (0-based)
 # - accent: The position of the accent in the word (0-based)
+#
+# Note that this is not necessarily "correct" hyphenation, but instead it is what
+# the library currently does. It is meant to catch any differences in behaviour
+# during development.
 # ---------------------------------------------------------------------------
 
 y y 0 -
@@ -379,7 +383,6 @@ niño ni-ño 0 -
 arriba a-rri-ba 1 -
 hija hi-ja 0 -
 otros o-tros 0 -
-sra sra 0 -
 personas per-so-nas 1 -
 tierra tie-rra 0 -
 manera ma-ne-ra 1 -
@@ -446,7 +449,6 @@ algunos al-gu-nos 1 -
 entrar en-trar 1 -
 fuerte fuer-te 0 -
 número nú-me-ro 0 1
-srta srta 0 -
 morir mo-rir 1 -
 basta bas-ta 0 -
 dar dar 0 -
@@ -477,7 +479,6 @@ mayor ma-yor 1 -
 última úl-ti-ma 0 0
 eran e-ran 0 -
 queda que-da 0 -
-ok ok 0 -
 paz paz 0 -
 dime di-me 0 -
 vuelta vuel-ta 0 -
@@ -551,7 +552,6 @@ pienso pien-so 0 -
 ésta és-ta 0 0
 esperar es-pe-rar 2 -
 necesitas ne-ce-si-tas 2 -
-aqui a-qui 0 -
 película pe-lí-cu-la 1 3
 además a-de-más 2 4
 marido ma-ri-do 1 -
@@ -832,7 +832,6 @@ tendrás ten-drás 1 5
 eras e-ras 0 -
 propio pro-pio 0 -
 culo cu-lo 0 -
-asi a-si 0 -
 adentro a-den-tro 1 -
 canción can-ción 1 5
 gobierno go-bier-no 1 -
@@ -861,7 +860,6 @@ pude pu-de 0 -
 teniente te-nien-te 1 -
 luna lu-na 0 -
 izquierda iz-quier-da 1 -
-uds uds 0 -
 doy doy 0 -
 servicio ser-vi-cio 1 -
 llamas lla-mas 0 -
@@ -1008,7 +1006,6 @@ pudiera pu-die-ra 1 -
 baile bai-le 0 -
 temprano tem-pra-no 1 -
 público pú-bli-co 0 1
-tí tí 0 1
 oí o-í 1 1
 mirando mi-ran-do 1 -
 ventana ven-ta-na 1 -
@@ -1056,7 +1053,6 @@ trasero tra-se-ro 1 -
 ojalá o-ja-lá 2 4
 veremos ve-re-mos 1 -
 seré se-ré 1 3
-éi éi 0 0
 irse ir-se 0 -
 cartas car-tas 0 -
 libros li-bros 0 -
@@ -1273,7 +1269,6 @@ tranquila tran-qui-la 1 -
 quedar que-dar 1 -
 esperanza es-pe-ran-za 2 -
 irte ir-te 0 -
-vd vd 0 -
 perros pe-rros 0 -
 casado ca-sa-do 1 -
 llegue lle-gue 0 -
@@ -1515,7 +1510,6 @@ contrario con-tra-rio 1 -
 tomado to-ma-do 1 -
 sois sois 0 -
 movimiento mo-vi-mien-to 2 -
-estan es-tan 0 -
 sentado sen-ta-do 1 -
 gana ga-na 0 -
 estén es-tén 1 3
@@ -1566,7 +1560,6 @@ tengan ten-gan 0 -
 oigan oi-gan 0 -
 sentí sen-tí 1 4
 debí de-bí 1 3
-ahi ahi 0 -
 policías po-li-cí-as 2 5
 lugares lu-ga-res 1 -
 contrato con-tra-to 1 -
@@ -1774,7 +1767,6 @@ duerme duer-me 0 -
 definitivamente de-fi-ni-ti-va-men-te 5 -
 directo di-rec-to 1 -
 vuelvas vuel-vas 0 -
-dia dia 0 -
 demonio de-mo-nio 1 -
 parque par-que 0 -
 cambia cam-bia 0 -
@@ -1787,14 +1779,12 @@ saliendo sa-lien-do 1 -
 muevas mue-vas 0 -
 señoras se-ño-ras 1 -
 disparar dis-pa-rar 2 -
-sóio só-io 0 1
 pide pi-de 0 -
 debió de-bió 1 4
 empresa em-pre-sa 1 -
 precioso pre-cio-so 1 -
 termina ter-mi-na 1 -
 intención in-ten-ción 2 7
-tambien tam-bien 0 -
 recibir re-ci-bir 2 -
 hubieras hu-bie-ras 1 -
 abrigo a-bri-go 1 -
@@ -1829,7 +1819,7 @@ quedado que-da-do 1 -
 alcalde al-cal-de 1 -
 empleo em-ple-o 1 -
 pollo po-llo 0 -
-whisky whis-ky 1 -
+whisky whis-ky 0 -
 carretera ca-rre-te-ra 2 -
 sábado sá-ba-do 0 1
 aeropuerto a-e-ro-puer-to 3 -

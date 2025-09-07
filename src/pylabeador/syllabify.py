@@ -54,8 +54,16 @@ def hyphenate(word: str) -> WordProgress:
         else:
             end = word[-1]
             prev = word[-2]
+            if end == "y":
+                # When the word ends in y, it is treated as a vowel, unless it is preceded by a vowel
+                if is_vowel(prev, letter_after=end):
+                    # y is preceded by a vowel, so it is treated as a consonant
+                    word.stressed = num_syl - 1
+                else:
+                    # y is preceded by a consonant, so it is treated as a vowel
+                    word.stressed = num_syl - 2
             # Ends in vowel or n or s (y is treated as consonant for stress rules)
-            if is_vowel(end) or end in "ns" and is_vowel(prev):
+            elif is_vowel(end) or end in "ns" and is_vowel(prev):
                 word.stressed = num_syl - 2
             else:
                 word.stressed = num_syl - 1
