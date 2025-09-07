@@ -74,7 +74,11 @@ line-length = 120
 target-version = "py310"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "C", "N", "UP", "S", "RET"]
+select = ["E", "F", "I", "B", "C", "N", "UP", "S", "RET", "I001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["pylabeador"]
+force-sort-within-sections = true
 
 [tool.ruff.lint.per-file-ignores]
 "test/**/*.py" = ["S101"] # Allow assert statements in test files
