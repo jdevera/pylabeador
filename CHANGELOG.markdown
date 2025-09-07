@@ -4,7 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [0.6.0] - 2024-12-19
+## [0.7.0] - 2025-09-07
+### Fixed
+- Fix the handling of the letter 'y' in syllabification by separating the cases
+  where it works as vowel from those where it works as consonant. (Issue #14)
+- Fix stressed syllable detection for words ending in 'y'. Also related to whether
+  the 'y' acts as vowel or consonant.
+
+## [0.6.0] - 2025-09-06
 ### Fixed
 - Fix incorrect stress assignment for words ending in 'y'. Words like "Paraguay" and "estoy" now correctly report the stressed syllable position. (Issue #13)
 
