@@ -12,3 +12,5 @@ jobs:
     with:
       upload-coverage: true
       upload-artifacts: true
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

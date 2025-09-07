@@ -13,6 +13,10 @@ on:
         type: boolean
         default: false
         description: "Whether to upload build artifacts"
+    secrets:
+      CODECOV_TOKEN:
+        required: false
+        description: "Codecov token for uploading coverage"
 
 jobs:
   test:
@@ -47,17 +51,6 @@ jobs:
         env:
           PYTHONPATH: src
         run: uv run pytest --cov=./ --cov-report=xml --junitxml=junit.xml -o junit_family=legacy test
-
-      - name: Ensure Codecov token is set
-        run: |
-          if [ -z "${{ secrets.CODECOV_TOKEN }}" ]; then
-            echo "CODECOV_TOKEN is not set"
-            exit 1
-          fi
-          echo "TOKEN:${{ secrets.CODECOV_TOKEN }}" | sed 's/./X/g'
-        shell: bash
-        if: inputs.upload-coverage && matrix.python-version == '3.13'
-
 
       - name: Upload coverage to Codecov
         if: inputs.upload-coverage && matrix.python-version == '3.13'

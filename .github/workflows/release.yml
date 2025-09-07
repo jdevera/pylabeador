@@ -11,6 +11,8 @@ jobs:
     with:
       upload-coverage: false
       upload-artifacts: false
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   publish:
     name: Publish to PyPI
