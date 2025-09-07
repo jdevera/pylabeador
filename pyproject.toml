@@ -51,6 +51,7 @@ packages = ["src/pylabeador"]
 include = [
     "/src",
     "/test",
+    "/tools",
     "/README.markdown",
     "/COPYING",
     "/CHANGELOG.markdown",

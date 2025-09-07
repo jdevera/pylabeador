@@ -21,15 +21,15 @@ run = "uv run pytest test"
 
 [tasks.lint]
 description = "Run linting checks"
-run = "uv run ruff check src/ test/"
+run = "uv run ruff check src/ test/ tools/"
 
 [tasks.format]
 description = "Format code with ruff"
-run = "uv run ruff format src/ test/"
+run = "uv run ruff format src/ test/ tools/"
 
 [tasks.format-check]
 description = "Check code formatting with ruff"
-run = "uv run ruff format --check src/ test/"
+run = "uv run ruff format --check src/ test/ tools/"
 
 [tasks.ci]
 description = "Run continuous integration tasks"
@@ -92,3 +92,7 @@ echo "The package is ready to be published"
 [tasks.release]
 description = "Complete release process: bump, tag, and publish"
 depends = ["bump", "tag", "publish"]
+
+[tasks.gen-test-data]
+description = "Generate test data"
+run = "uv run ./tools/hyphenfile.py -t -i test/spanish-hyphens.txt -o test/spanish-hyphens.txt"
