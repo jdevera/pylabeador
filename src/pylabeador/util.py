@@ -25,21 +25,23 @@ LETTERS = VOWELS.union(CONSONANTS)
 def is_y_vowel(word: str, pos: int) -> bool:
     """
     Determine if 'y' at given position should be treated as a vowel.
-    Rule: 'y' acts as vowel except when it appears between two vowels.
+    
+    Refined rule for Spanish:
+    - 'y' acts as CONSONANT when followed by a vowel
+    - 'y' acts as VOWEL otherwise (including when followed by consonant or at word boundaries)
     """
     if pos < 0 or pos >= len(word) or word[pos].lower() != "y":
         return False
 
-    # Check character before position
-    char_before = word[pos - 1].lower() if pos > 0 else None
-    # Check character after position
     char_after = word[pos + 1].lower() if pos < len(word) - 1 else None
-
-    # 'y' is vowel except when between two vowels
-    before_is_vowel = char_before is not None and char_before in VOWELS
     after_is_vowel = char_after is not None and char_after in VOWELS
-
-    return not (before_is_vowel and after_is_vowel)
+    
+    # Rule: y followed by vowel = consonant (y+vowel cluster like "yu", "ye")
+    if after_is_vowel:
+        return False
+    
+    # Otherwise: y = vowel
+    return True
 
 
 def is_vowel(v: str | None, word: str | None = None, pos: int | None = None):

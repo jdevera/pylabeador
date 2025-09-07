@@ -80,13 +80,13 @@ class TestIsYVowelFunction:
     @pytest.mark.parametrize(
         "word, pos",
         [
-            ("yeso", 0),
             ("curry", 4),
             ("muy", 2),
+            ("estoy", 4),
         ],
     )
-    def test_y_at_boundaries_is_vowel(self, word, pos):
-        """'y' at word boundaries should be treated as vowel"""
+    def test_y_at_word_end_is_vowel(self, word, pos):
+        """'y' at word end should be treated as vowel"""
         assert is_y_vowel(word, pos) is True  # end of word
 
     @pytest.mark.parametrize(
@@ -95,12 +95,13 @@ class TestIsYVowelFunction:
             ("mayor", 2),
             ("ayer", 1),
             ("payaso", 2),
+            ("yeso", 0),
             ("playa", 3),
             ("cónyuge", 4),
         ],
     )
-    def test_y_between_vowels_is_consonant(self, word, pos):
-        """'y' between vowels should be treated as consonant"""
+    def test_y_followed_by_vowel_is_consonant(self, word, pos):
+        """'y' followed by vowel should be treated as consonant"""
         assert is_y_vowel(word, pos) is False
 
     @pytest.mark.parametrize(
@@ -120,12 +121,12 @@ class TestIsYVowelFunction:
         [
             ("bypass", 1),
             ("curry", 4),
-            ("yeso", 0),
         ],
     )
     def test_y_with_context_as_vowel(self, word, pos):
         """Test 'y' with context where it should be vowel"""
         assert is_vowel("y", word, pos) is True
+        
 
     @pytest.mark.parametrize(
         "word, pos",
