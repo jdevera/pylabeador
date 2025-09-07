@@ -126,7 +126,6 @@ class TestIsYVowelFunction:
     def test_y_with_context_as_vowel(self, word, pos):
         """Test 'y' with context where it should be vowel"""
         assert is_vowel("y", word, pos) is True
-        
 
     @pytest.mark.parametrize(
         "word, pos",

@@ -5651,7 +5651,7 @@ ofrecerle o-fre-cer-le 2 -
 choque cho-que 0 -
 generales ge-ne-ra-les 2 -
 tierno tier-no 0 -
-inyección i-nyec-ción 2 7
+inyección in-yec-ción 2 7
 recibiendo re-ci-bien-do 2 -
 pasteles pas-te-les 1 -
 computadoras com-pu-ta-do-ras 3 -

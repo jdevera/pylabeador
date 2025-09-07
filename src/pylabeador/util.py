@@ -25,7 +25,7 @@ LETTERS = VOWELS.union(CONSONANTS)
 def is_y_vowel(word: str, pos: int) -> bool:
     """
     Determine if 'y' at given position should be treated as a vowel.
-    
+
     Refined rule for Spanish:
     - 'y' acts as CONSONANT when followed by a vowel
     - 'y' acts as VOWEL otherwise (including when followed by consonant or at word boundaries)
@@ -35,11 +35,11 @@ def is_y_vowel(word: str, pos: int) -> bool:
 
     char_after = word[pos + 1].lower() if pos < len(word) - 1 else None
     after_is_vowel = char_after is not None and char_after in VOWELS
-    
+
     # Rule: y followed by vowel = consonant (y+vowel cluster like "yu", "ye")
     if after_is_vowel:
         return False
-    
+
     # Otherwise: y = vowel
     return True
 

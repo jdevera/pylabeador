@@ -235,13 +235,14 @@ def coda(word: WordProgress):  # noqa: C901
         if c1 not in "sr" and c2 == "h":
             return
 
-        # If the letter 'y' is preceded by the some
-        #      letter 's', 'l', 'r', 'n' or 'c' then
-        #      a new syllable begins in the previous consonant
-        # else it begins in the letter 'y'
+        # Handle 'y' based on whether it's acting as vowel or consonant
         if c2 == "y":
-            if c1 not in "slrnc":
-                word.next()  # move the pointer to the y
+            # Use context-aware detection to see if y is vowel or consonant
+            if is_vowel("y", word.word, word.pos + 1):
+                # y is vowel - follows standard consonant+vowel rule (consonant goes to next syllable)
+                return
+            # y is consonant - move to y to start next syllable
+            word.next()  # move the pointer to the y
             return
 
         # fmt: off
@@ -253,8 +254,12 @@ def coda(word: WordProgress):  # noqa: C901
         word.next()
     else:  # 3rd consonant
         if word.pos >= word.len - 3:  # The word ends with 3 consonants
-            if c2 == "y" and c1 in "slrnc":  # y as vowel
-                return
+            if c2 == "y":
+                # Use context-aware detection
+                if is_vowel("y", word.word, word.pos + 1):
+                    # y is vowel - previous consonant can stay as coda
+                    return
+                # y is consonant - handle like other consonants
 
             if c3 == "y":
                 word.next()
@@ -262,10 +267,14 @@ def coda(word: WordProgress):  # noqa: C901
                 word.next(3)  # The word ends with 3 consonants
             return
 
-        # This is not the end of the word
-        if c2 == "y" and c1 in "slrnc":  # y as a vowel
-            word.next()
-            return
+        # This is not the end of the word - handle y based on context
+        if c2 == "y":
+            # Use context-aware detection
+            if is_vowel("y", word.word, word.pos + 1):
+                # y is vowel - previous consonant goes to next syllable (standard rule)
+                word.next()
+                return
+            # y is consonant - fall through to standard consonant cluster logic
 
         # The groups pt, ct, cn, ps, mn, gn, ft, pn, cz, tz and ts begin a syllable
         # when preceded by other consonant

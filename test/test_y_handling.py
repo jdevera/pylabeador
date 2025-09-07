@@ -34,17 +34,17 @@ class TestYSillabification:
     @pytest.mark.parametrize(
         ["word", "expected"],
         [
-            pytest.param("coadyuvar", "co-ad-yu-var"),
-            pytest.param(
-                "cónyuge",
-                "cón-yu-ge",
-                marks=pytest.mark.xfail(reason="Known issue with consonant clustering before 'y'"),
-            ),
-            pytest.param(
-                "inyección",
-                "in-yec-ción",
-                marks=pytest.mark.xfail(reason="Known issue with consonant clustering before 'y'"),
-            ),
+            ("coadyuvar", "co-ad-yu-var"),
+            ("abyecto", "ab-yec-to"),
+            ("adyacente", "ad-ya-cen-te"),
+            ("ilyección", "il-yec-ción"),
+            ("inyección", "in-yec-ción"),
+            ("conyugal", "con-yu-gal"),
+            ("enyugado", "en-yu-ga-do"),
+            ("circunyacente", "cir-cun-ya-cen-te"),
+            ("interyacente", "in-ter-ya-cen-te"),
+            ("disyuntiva", "dis-yun-ti-va"),
+            ("desyerbar", "des-yer-bar"),
         ],
     )
     def test_y_complex_cases(self, word, expected):

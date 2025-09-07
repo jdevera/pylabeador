@@ -77,7 +77,7 @@ class WordProgress:
             return None
 
     @property
-    def one_ahead(self):
+    def one_ahead(self) -> str | None:
         return self.look_ahead(1)
 
     def look_ahead(self, steps=1) -> str | None:
