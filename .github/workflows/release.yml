@@ -32,6 +32,7 @@ jobs:
           version: latest
           python-version: 3.13
           enable-cache: false
+          cache-dependency-glob: "**/pyproject.toml"
 
       - name: Install dependencies
         run: uv sync --all-groups --all-extras

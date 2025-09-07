@@ -65,6 +65,22 @@ jobs:
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload coverage artifacts
+        if: inputs.upload-coverage && matrix.python-version == '3.13' && ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-python-${{ matrix.python-version }}
+          path: coverage.xml
+          retention-days: 7
+
+      - name: Upload junit artifacts
+        if: inputs.upload-coverage && matrix.python-version == '3.13' && ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-python-${{ matrix.python-version }}
+          path: junit.xml
+          retention-days: 7
   build:
     name: Build package
     runs-on: ubuntu-latest
