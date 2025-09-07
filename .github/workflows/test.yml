@@ -1,0 +1,89 @@
+name: Test
+
+on:
+  workflow_call:
+    inputs:
+      upload-coverage:
+        required: false
+        type: boolean
+        default: false
+        description: 'Whether to upload coverage to Codecov'
+      upload-artifacts:
+        required: false
+        type: boolean
+        default: false
+        description: 'Whether to upload build artifacts'
+
+jobs:
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Cache uv environment
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-uv-${{ matrix.python-version }}-${{ hashFiles('**/pyproject.toml', '**/uv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-${{ matrix.python-version }}-
+            ${{ runner.os }}-uv-
+
+      - name: Install dependencies
+        run: uv sync --all-groups --all-extras
+
+      - name: Lint with Ruff
+        run: uv run ruff check .
+
+      - name: Check format with Ruff
+        run: uv run ruff format --check .
+
+      - name: Run tests
+        env:
+          PYTHONPATH: src
+        run: uv run pytest --cov=./ --cov-report=xml test
+
+      - name: Upload coverage to Codecov
+        if: inputs.upload-coverage && matrix.python-version == '3.13'
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage.xml
+          flags: unittests
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    name: Build package
+    runs-on: ubuntu-latest
+    needs: test
+    if: inputs.upload-artifacts
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync --all-groups --all-extras
+
+      - name: Build package
+        run: uv build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
