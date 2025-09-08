@@ -41,12 +41,13 @@ def is_vowel(v: str | None, letter_after: str | None = _NOT_PASSED):
 def check_word_for_spanish_chars(word):
     from .errors import HyphenatorError
 
-    bad_letters = set(word.lower()) - LETTERS
+    word_lower = word.lower()
+    bad_letters = set(word_lower) - LETTERS
     if bad_letters:
         raise HyphenatorError(f"The word {word} contains invalid letters in Spanish: {bad_letters}")
-    if "ü" in word:
-        pos = word.find("ü")
-        follows_g = pos > 0 and word[pos - 1] == "g"
-        folowed_by_ei = pos + 1 < len(word) and word[pos + 1] in "eiéí"
+    if "ü" in word_lower:
+        pos = word_lower.find("ü")
+        follows_g = pos > 0 and word_lower[pos - 1] == "g"
+        folowed_by_ei = pos + 1 < len(word_lower) and word_lower[pos + 1] in "eiéí"
         if not follows_g or not folowed_by_ei:
             raise HyphenatorError(f"The word {word} does not seem to be Spanish, where ü can only appear in güe or güi")
