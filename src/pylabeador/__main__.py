@@ -20,7 +20,7 @@
 import argparse
 import sys
 
-from . import __version__, syllabify_with_details
+from . import __version__, syllabify_with_details, HyphenatorError
 
 
 def parse_args(argv):
@@ -40,6 +40,9 @@ def main(argv=None):
         for word in args.words:
             res = syllabify_with_details(word)
             print(res.hyphenated)
+    except HyphenatorError as e:
+        print(f"Error: {str(e)}", file=sys.stderr)
+        sys.exit(1)
     except KeyboardInterrupt:
         sys.exit(-1)
 
