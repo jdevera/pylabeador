@@ -91,8 +91,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
+      - name: Install uv and setup the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: latest
+          python-version: 3.13
+          enable-cache: false
+          cache-dependency-glob: "**/pyproject.toml"
 
       - name: Install dependencies
         run: uv sync --all-groups --all-extras
