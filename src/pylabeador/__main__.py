@@ -20,7 +20,7 @@
 import argparse
 import sys
 
-from . import __version__, syllabify_with_details, HyphenatorError
+from . import HyphenatorError, __version__, syllabify_with_details
 
 
 def parse_args(argv):
