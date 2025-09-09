@@ -1,73 +1,67 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [project]
 name = "pylabeador"
 description = "Automatic syllabification for Spanish words"
-authors = [{name = "Jacobo de Vera", email = "devel@jacobodevera.com"}]
-license = {text = "GPL-3.0-or-later"}
 requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "Jacobo de Vera", email = "devel@jacobodevera.com" }]
 classifiers = [
-    "Development Status :: 4 - Beta",
-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Topic :: Software Development :: Libraries",
-    "Topic :: Text Processing",
-    "Topic :: Text Processing :: Linguistic",
-    "Intended Audience :: Education",
-    "Intended Audience :: Science/Research",
-    "Natural Language :: Spanish",
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Education",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Natural Language :: Spanish",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Text Processing",
+  "Topic :: Text Processing :: Linguistic",
 ]
 dynamic = ["version"]
-
-[project.urls]
-Homepage = "https://github.com/jdevera/pylabeador"
-Changelog = "https://github.com/jdevera/pylabeador/blob/main/CHANGELOG.markdown"
-
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-    "ruff",
-    "hatch",
-    "mmg>=2.0.1",
-]
 
 [project.readme]
 file = "README.md"
 content-type = "text/markdown"
 
+[project.urls]
+Changelog = "https://github.com/jdevera/pylabeador/blob/main/CHANGELOG.markdown"
+Homepage = "https://github.com/jdevera/pylabeador"
+
 [project.scripts]
 pylabeador = "pylabeador.__main__:entrypoint"
+
+[dependency-groups]
+dev = [
+  "hatch",
+  "mmg>=2.0.1",
+  "pre-commit>=4.3.0",
+  "pytest",
+  "pytest-cov",
+  "ruff",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pylabeador"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/src",
-    "/test",
-    "/tools",
-    "/README.md",
-    "/README.es.md",
-    "/COPYING",
-    "/CHANGELOG.markdown",
+  "/src",
+  "/test",
+  "/tools",
+  "/README.md",
+  "/README.es.md",
+  "/COPYING",
+  "/CHANGELOG.markdown",
 ]
 
 [tool.hatch.version]
 path = "src/pylabeador/__version__.py"
-
-[tool.tox]
-envlist = ["py310", "py311", "py312", "py313"]
-
-[tool.tox.env_run_base]
-deps = ["pytest"]
-commands = [["pytest", "test"]]
 
 [tool.pytest.ini_options]
 disable_test_id_escaping_and_forfeit_all_rights_to_community_support = true
@@ -84,8 +78,16 @@ known-first-party = ["pylabeador"]
 force-sort-within-sections = true
 
 [tool.ruff.lint.per-file-ignores]
-"test/**/*.py" = ["S101"] # Allow assert statements in test files
+"test/**/*.py" = ["S101"]  # Allow assert statements in test files
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+[tool.tox]
+envlist = ["py310", "py311", "py312", "py313"]
+
+[tool.tox.env_run_base]
+deps = ["pytest"]
+commands = [["pytest", "test"]]
+
