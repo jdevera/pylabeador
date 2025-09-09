@@ -49,6 +49,7 @@ git commit -m "Bump version to $usage_version"
 [tasks.tag]
 description = "Create a git tag with the current version"
 run = "version=$(uv run hatch version) && git tag \"v$version\""
+depends = ["clean", "ci"]
 
 [tasks.publish-test]
 description = "Publish to test PyPI (requires TEST_PYPI_TOKEN)"
