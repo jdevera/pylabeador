@@ -35,10 +35,11 @@ dev = [
     "pytest-cov",
     "ruff",
     "hatch",
+    "mmg>=2.0.1",
 ]
 
 [project.readme]
-file = "README.markdown"
+file = "README.md"
 content-type = "text/markdown"
 
 [project.scripts]
@@ -52,7 +53,8 @@ include = [
     "/src",
     "/test",
     "/tools",
-    "/README.markdown",
+    "/README.md",
+    "/README.es.md",
     "/COPYING",
     "/CHANGELOG.markdown",
 ]

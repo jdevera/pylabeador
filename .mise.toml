@@ -97,3 +97,11 @@ depends = ["bump", "tag", "publish"]
 [tasks.gen-test-data]
 description = "Generate test data"
 run = "uv run ./tools/hyphenfile.py -t -i test/spanish-hyphens.txt -o test/spanish-hyphens.txt"
+
+[tasks.generate-readmes]
+description = "Generate language-specific README files using MMG"
+run = "uv run mmg README.base.md --yes"
+
+[tasks.readme-validate]
+description = "Validate the base README file structure"
+run = "uv run mmg README.base.md --validation-only"
