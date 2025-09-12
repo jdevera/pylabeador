@@ -15,6 +15,11 @@ repos:
       - id: check-docstring-first
       - id: check-executables-have-shebangs
 
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.8.17
+    hooks:
+      - id: uv-lock
 
   # Ruff for linting and formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
