@@ -77,9 +77,9 @@ La silabación automática sin conocimiento léxico o semántico adicional de la
 <!-- [en] -->
 ## Inspiration / Original source
 
-This work is inspired by the excellent online tool [Silabeador TIP](https://tulengua.es/syllables/). This tool considers the semantics of the words and correctly separates syllables in the presence of prefixes. They also provide a C++ library that performs the naive syllable separation that `pylabeador` does. In fact, *pyleabeador* started as a Python port of that library.
+This work is inspired by the excellent online tool [Silabeador TIP](https://tulengua.iatext.ulpgc.es/syllables/). This tool considers the semantics of the words and correctly separates syllables in the presence of prefixes. They also provide a C++ library that performs the naive syllable separation that `pylabeador` does. In fact, *pyleabeador* started as a Python port of that library.
 
 <!-- [es] -->
 ## Inspiración / Fuente original
 
-Este trabajo está inspirado en la excelente herramienta online [Silabeador TIP](https://tulengua.es/syllables/). Esta herramienta considera la semántica de las palabras y separa correctamente las sílabas en presencia de prefijos. También proporcionan una librería en C++ que lleva a cabo la separación de sílabas *ingenua* que `pylabeador` hace. De hecho, *pylabeador* comenzó como una reescritura en Python de esa librería.
+Este trabajo está inspirado en la excelente herramienta online [Silabeador TIP](https://tulengua.iatext.ulpgc.es/silabas/). Esta herramienta considera la semántica de las palabras y separa correctamente las sílabas en presencia de prefijos. También proporcionan una librería en C++ que lleva a cabo la separación de sílabas *ingenua* que `pylabeador` hace. De hecho, *pylabeador* comenzó como una reescritura en Python de esa librería.

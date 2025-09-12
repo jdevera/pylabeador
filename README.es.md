@@ -49,4 +49,4 @@ La silabación automática sin conocimiento léxico o semántico adicional de la
 
 ## Inspiración / Fuente original
 
-Este trabajo está inspirado en la excelente herramienta online [Silabeador TIP](https://tulengua.es/syllables/). Esta herramienta considera la semántica de las palabras y separa correctamente las sílabas en presencia de prefijos. También proporcionan una librería en C++ que lleva a cabo la separación de sílabas *ingenua* que `pylabeador` hace. De hecho, *pylabeador* comenzó como una reescritura en Python de esa librería.
+Este trabajo está inspirado en la excelente herramienta online [Silabeador TIP](https://tulengua.iatext.ulpgc.es/silabas/). Esta herramienta considera la semántica de las palabras y separa correctamente las sílabas en presencia de prefijos. También proporcionan una librería en C++ que lleva a cabo la separación de sílabas *ingenua* que `pylabeador` hace. De hecho, *pylabeador* comenzó como una reescritura en Python de esa librería.
