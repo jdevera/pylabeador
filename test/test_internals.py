@@ -19,7 +19,7 @@
 import pytest
 
 from pylabeador import WordProgress
-from pylabeador.syllabify import nucleus, onset
+from pylabeador.engine import nucleus, onset, parse_word
 from pylabeador.util import is_vowel
 
 
@@ -51,10 +51,8 @@ def test_nucleus():
     [("paraguay", 3, "pa-ra-guay", "uay")],
 )
 def test_uncommon_nucleus(word, syllable_to_check, expected_hyphenation, expected_nucleus):
-    from pylabeador.syllabify import hyphenate
-
     # Test the full hyphenation
-    result = hyphenate(word)
+    result = parse_word(word)
     hyphenated = "-".join(s.value for s in result.syllables)
     assert hyphenated == expected_hyphenation
 

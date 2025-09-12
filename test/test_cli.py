@@ -18,6 +18,7 @@
 # -------------------------------------------------------------------------------------
 
 import io
+from typing import cast
 from unittest.mock import patch
 
 import pytest
@@ -42,7 +43,7 @@ def test_cli_invalid_characters_error():
     with patch("sys.stderr", new_callable=io.StringIO) as mock_stderr:
         with pytest.raises(SystemExit) as exc_info:
             main(["pylabeador", "hello123"])
-        assert exc_info.value.code == 1
+        assert cast(SystemExit, exc_info.value).code == 1
     error_output = mock_stderr.getvalue().strip()
     assert error_output.startswith("Error:")
     assert "invalid letters" in error_output
@@ -52,7 +53,7 @@ def test_cli_invalid_u_diaeresis_error():
     with patch("sys.stderr", new_callable=io.StringIO) as mock_stderr:
         with pytest.raises(SystemExit) as exc_info:
             main(["pylabeador", "müsica"])
-        assert exc_info.value.code == 1
+        assert cast(SystemExit, exc_info.value).code == 1
     error_output = mock_stderr.getvalue().strip()
     assert error_output.startswith("Error:")
     assert "does not seem to be Spanish" in error_output
@@ -62,4 +63,4 @@ def test_cli_keyboard_interrupt():
     with patch("pylabeador.__main__.syllabify_with_details", side_effect=KeyboardInterrupt):
         with pytest.raises(SystemExit) as exc_info:
             main(["pylabeador", "casa"])
-        assert exc_info.value.code == -1
+        assert cast(SystemExit, exc_info.value).code == -1

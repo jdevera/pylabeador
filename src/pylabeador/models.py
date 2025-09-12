@@ -60,7 +60,7 @@ class WordProgress:
     pos: int = 0
     len: int = field(init=False, default=0)
     accent: int | None = None
-    stress_found: bool = None
+    stress_found: bool = False
     stressed: int | None = None
     syllables: list[Syllable] = field(default_factory=list)
     word: str = field(init=False)

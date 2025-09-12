@@ -25,51 +25,60 @@ from .util import CONSONANTS, is_vowel
 CONSONANTS_BAR_Y = CONSONANTS - set("y")
 
 
-def hyphenate(word: str) -> WordProgress:
-    word = WordProgress(word)
+def parse_word(word: str) -> WordProgress:
+    word_progress = WordProgress(word)
 
-    while not word.ended:
-        syllable = word.add_syllable()
-        start_pos = word.pos
+    while not word_progress.ended:
+        syllable = word_progress.add_syllable()
+        start_pos = word_progress.pos
 
         # All initial consonants belong to the onset (in the case of y, only the first)
-        syllable.onset = onset(word)
-        syllable.nucleus = nucleus(word)
-        syllable.coda = coda(word)
+        syllable.onset = onset(word_progress)
+        syllable.nucleus = nucleus(word_progress)
+        syllable.coda = coda(word_progress)
 
-        end_pos = word.pos
-        syllable.accented = word.accent is not None and start_pos <= word.accent < end_pos
+        end_pos = word_progress.pos
+        syllable.accented = word_progress.accent is not None and start_pos <= word_progress.accent < end_pos
 
-        num_syl = len(word.syllables)
-        if word.stress_found and word.stressed is None:
-            word.stressed = num_syl - 1
+        num_syl = len(word_progress.syllables)
+        if word_progress.stress_found and word_progress.stressed is None:
+            word_progress.stressed = num_syl - 1
 
+    word_progress.stressed = find_stressed_syllable(word_progress)
+    word_progress.syllables[word_progress.stressed].stressed = True
+    word_progress.stress_found = True
+    return word_progress
+
+
+def find_stressed_syllable(word_progress: WordProgress) -> int:
+    stressed = None
+    if word_progress.stress_found:
+        if word_progress.stressed is None:
+            raise RuntimeError("Stressed syllable is not set for accented word")
+        return word_progress.stressed
     # If the word does not have a graphical accent, then find the stressed
     # syllable according to the Spanish rules
-    if not word.stress_found:
-        num_syl = len(word.syllables)
-        # If the word has only one syllable, that's the one!
-        if num_syl == 1:
-            word.stressed = num_syl - 1
-        else:
-            end = word[-1]
-            prev = word[-2]
-            if end == "y":
-                # When the word ends in y, it is treated as a vowel, unless it is preceded by a vowel
-                if is_vowel(prev, letter_after=end):
-                    # y is preceded by a vowel, so it is treated as a consonant
-                    word.stressed = num_syl - 1
-                else:
-                    # y is preceded by a consonant, so it is treated as a vowel
-                    word.stressed = num_syl - 2
-            # Ends in vowel or n or s (y is treated as consonant for stress rules)
-            elif is_vowel(end) or end in "ns" and is_vowel(prev):
-                word.stressed = num_syl - 2
+    num_syl = len(word_progress.syllables)
+    # If the word has only one syllable, that's the one!
+    if num_syl == 1:
+        stressed = num_syl - 1
+    else:
+        end = word_progress[-1]
+        prev = word_progress[-2]
+        if end == "y":
+            # When the word ends in y, it is treated as a vowel, unless it is preceded by a vowel
+            if is_vowel(prev, letter_after=end):
+                # y is preceded by a vowel, so it is treated as a consonant
+                stressed = num_syl - 1
             else:
-                word.stressed = num_syl - 1
-    word.syllables[word.stressed].stressed = True
-    word.stress_found = True
-    return word
+                # y is preceded by a consonant, so it is treated as a vowel
+                stressed = num_syl - 2
+        # Ends in vowel or n or s (y is treated as consonant for stress rules)
+        elif is_vowel(end) or end in "ns" and is_vowel(prev):
+            stressed = num_syl - 2
+        else:
+            stressed = num_syl - 1
+    return stressed
 
 
 def return_section(f):
@@ -232,8 +241,10 @@ def coda(word: WordProgress):  # noqa: C901
     c1 = word.char
     c2 = word.look_ahead(1)
     c3 = word.look_ahead(2)
+    assert c2 is not None  # noqa: S101 # Assert is here to help the type checker
+    assert c3 is not None  # noqa: S101 # Assert is here to help the type checker
 
-    if c3 and is_vowel(c3, word.look_ahead(3)):
+    if is_vowel(c3, word.look_ahead(3)):
         digraph = c1 + c2
         # ll, ch, and rr start a new syllable
         if digraph in ("ll", "ch", "rr"):

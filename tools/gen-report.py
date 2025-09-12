@@ -36,7 +36,7 @@ def lines_from(filename, start=1, limit=None):
         yield lineno, clean_line
 
 
-def format_result(res: pylabeador.models.SyllabifiedWord):
+def format_result(res: pylabeador.SyllabifiedWord):
     if res.accented is not None:
         original = (
             res.original[: res.accented]
@@ -68,13 +68,13 @@ def main(input: IO[str], start: int, limit: int | None):
             res = pylabeador.syllabify_with_details(line)
             original, hyphenated = format_result(res)
             table.add_row(str(lineno), original, hyphenated)
-        except pylabeador.errors.HyphenatorError as e:
+        except pylabeador.HyphenatorError as e:
             errors.append((lineno, e))
     console.print(table)
     if errors:
         console.print("[bold red]Errors:[/bold red]")
-        for lineno, e in errors:
-            console.print(f"[bold red]{lineno}[/bold red]: {e}")
+        for lineno, error in errors:
+            console.print(f"[bold red]{lineno}[/bold red]: {error}")
 
 
 if __name__ == "__main__":

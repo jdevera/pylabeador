@@ -18,14 +18,14 @@
 # -------------------------------------------------------------------------------------
 
 
-from . import syllabify as _syllabify
+from .engine import parse_word
 from .models import SyllabifiedWord
 from .util import check_word_for_spanish_chars
 
 
 def syllabify_with_details(word: str) -> SyllabifiedWord:
     check_word_for_spanish_chars(word)
-    return _syllabify.hyphenate(word).to_result()
+    return parse_word(word).to_result()
 
 
 def syllabify(word: str) -> list[str]:

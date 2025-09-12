@@ -8,6 +8,7 @@
 # ]
 # ///
 
+from collections.abc import Iterable
 from pathlib import Path
 import sys
 from typing import IO
@@ -62,7 +63,7 @@ def main(input_file: IO[str], output_file: IO[str], try_hard: bool):
     during development.
     """
     errors = []
-    input_lines = input_file
+    input_lines: Iterable[str] = input_file
     input_path = Path(input_file.name).resolve()
     output_path = Path(output_file.name).resolve()
     if input_path == output_path:
@@ -87,7 +88,7 @@ def main(input_file: IO[str], output_file: IO[str], try_hard: bool):
                 f"{w.original} {w.hyphenated} {w.stressed} {w.accented if w.accented is not None else '-'}".strip(),
                 file=output_file,
             )
-        except pylabeador.errors.HyphenatorError as e:
+        except pylabeador.HyphenatorError as e:
             errors.append((line_no, str(e)))
     console = Console(stderr=True)
     console.print("[bold green]DONE[/bold green]")

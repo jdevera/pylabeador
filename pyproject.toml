@@ -90,4 +90,3 @@ envlist = ["py310", "py311", "py312", "py313"]
 [tool.tox.env_run_base]
 deps = ["pytest"]
 commands = [["pytest", "test"]]
-
