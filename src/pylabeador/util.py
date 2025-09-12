@@ -39,6 +39,13 @@ def is_vowel(v: str | None, letter_after: str | None = _NOT_PASSED):
 
 
 def check_word_for_spanish_chars(word):
+    """
+    Check if a word contains only valid Spanish characters.
+
+    Some characters are valid in Spanish only in specific contexts, such as 'ü'
+    in 'güe' or 'güi'.
+    """
+
     from .errors import HyphenatorError
 
     word_lower = word.lower()

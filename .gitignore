@@ -50,3 +50,9 @@ MANIFEST
 # Per-project virtualenvs
 .venv*/
 venv/
+
+# Environment variables
+.env
+
+# local files
+local/
