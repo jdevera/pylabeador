@@ -19,6 +19,33 @@ description = "Run the test suite with pytest"
 env = { PYTHONPATH = "src" }
 run = "uv run pytest test"
 
+[tasks.test-version]
+description = "Run the test suite with pytest on a specific python version"
+usage = '''
+arg "version" "Python version to run tests with"
+'''
+env = { PYTHONPATH = "src" }
+run = "uv run --python $usage_version --group dev --isolated pytest"
+
+
+[tasks.test-310]
+run = "mise test-version 3.10"
+[tasks.test-311]
+run = "mise test-version 3.11"
+[tasks.test-312]
+run = "mise test-version 3.12"
+[tasks.test-313]
+run = "mise test-version 3.13"
+
+[tasks.test-matrix]
+description = "Run the test suite with pytest on a matrix of python versions"
+depends = [
+  "test-310",
+  "test-311",
+  "test-312",
+  "test-313",
+]
+
 [tasks.lint]
 description = "Run linting checks"
 run = "uv run ruff check src/ test/ tools/"
@@ -31,9 +58,18 @@ run = "uv run ruff format src/ test/ tools/"
 description = "Check code formatting with ruff"
 run = "uv run ruff format --check src/ test/ tools/"
 
+[tasks.mypy]
+description = "Run mypy"
+run = "uv run --isolated --with mypy --group dev mypy ."
+
 [tasks.ci]
 description = "Run continuous integration tasks"
-depends = ["build", "format-check", "lint", "test"]
+depends = ["format-check", "lint", "build", "test-matrix"]
+run = [
+  { tasks = ["format-check", "lint"] },
+  { tasks = ["build"] },
+  { tasks = ["test-matrix"] },
+]
 
 [tasks.bump]
 description = "Bump version and commit changes"
