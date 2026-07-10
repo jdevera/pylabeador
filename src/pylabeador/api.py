@@ -38,7 +38,7 @@ def syllabify_with_details(word: str) -> SyllabifiedWord:
         >>> from pprint import pprint
         >>> pprint(pylabeador.syllabify_with_details("encuentro"))
         SyllabifiedWord(original='encuentro',
-                        syllables=[Syllable(onset='',
+                        syllables=(Syllable(onset='',
                                             nucleus='e',
                                             coda='n',
                                             accented=False,
@@ -52,7 +52,7 @@ def syllabify_with_details(word: str) -> SyllabifiedWord:
                                             nucleus='o',
                                             coda='',
                                             accented=False,
-                                            stressed=False)],
+                                            stressed=False)),
                         stressed=1,
                         accented=None)
     """

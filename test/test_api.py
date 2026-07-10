@@ -1,3 +1,5 @@
+import dataclasses
+
 import pytest
 
 import pylabeador
@@ -34,3 +36,11 @@ def test_syllabify_with_details():
     assert res.hyphenated == "te-na-ci-dad"
     assert res.stressed == 3
     assert not res.accented
+
+
+def test_syllabified_word_is_immutable():
+    res = pylabeador.syllabify_with_details("tenacidad")
+    with pytest.raises(dataclasses.FrozenInstanceError):
+        res.original = "otra"
+    with pytest.raises(AttributeError):
+        res.syllables.append(pylabeador.Syllable())

@@ -39,7 +39,7 @@ class Syllable:
 @dataclass(frozen=True)
 class SyllabifiedWord:
     original: str
-    syllables: list[Syllable]
+    syllables: tuple[Syllable, ...]
     stressed: int | None = None
     accented: int | None = None
 
@@ -138,7 +138,7 @@ class WordProgress:
             raise ValueError("Word is not ended")
         if not self.stress_found:
             raise ValueError("Stress is not found")
-        return SyllabifiedWord(self.original_word, self.syllables, self.stressed, self.accent)
+        return SyllabifiedWord(self.original_word, tuple(self.syllables), self.stressed, self.accent)
 
 
 class VowelType(Enum):

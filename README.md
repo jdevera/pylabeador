@@ -32,7 +32,7 @@ You can use it as a Python library:
 
 ```python
 >>> pylabeador.syllabify_with_details("con")
-SyllabifiedWord(original='con', syllables=[Syllable(onset='c', nucleus='o', coda='n', accented=False, stressed=True)], stressed=0, accented=None)
+SyllabifiedWord(original='con', syllables=(Syllable(onset='c', nucleus='o', coda='n', accented=False, stressed=True),), stressed=0, accented=None)
 
 ```
 
