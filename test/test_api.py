@@ -1,4 +1,11 @@
+import pytest
+
 import pylabeador
+
+
+def test_empty_word_raises_hyphenator_error():
+    with pytest.raises(pylabeador.HyphenatorError):
+        pylabeador.syllabify("")
 
 
 def test_syllabify():

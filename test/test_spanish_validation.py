@@ -52,6 +52,10 @@ from pylabeador.util import check_word_for_spanish_chars
         ("güo", "ü can only appear in güe or güi"),
         ("gü", "ü can only appear in güe or güi"),
         ("büggy", "ü can only appear in güe or güi"),
+        # Empty or blank input
+        ("", "empty"),
+        (" ", "invalid letters"),
+        ("  \t", "invalid letters"),
     ],
 )
 def test_check_word_for_spanish_chars(word, expected_error_substring):

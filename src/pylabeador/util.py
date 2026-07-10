@@ -48,6 +48,8 @@ def check_word_for_spanish_chars(word):
 
     from .errors import HyphenatorError
 
+    if not word:
+        raise HyphenatorError("The word is empty")
     word_lower = word.lower()
     bad_letters = set(word_lower) - LETTERS
     if bad_letters:
