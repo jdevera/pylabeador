@@ -41,6 +41,6 @@ def test_syllabify_with_details():
 def test_syllabified_word_is_immutable():
     res = pylabeador.syllabify_with_details("tenacidad")
     with pytest.raises(dataclasses.FrozenInstanceError):
-        res.original = "otra"
+        res.original = "otra"  # ty: ignore[invalid-assignment]
     with pytest.raises(AttributeError):
-        res.syllables.append(pylabeador.Syllable())
+        res.syllables.append(pylabeador.Syllable())  # ty: ignore[unresolved-attribute]
