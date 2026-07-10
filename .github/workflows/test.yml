@@ -80,13 +80,13 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results to Codecov
-        if: inputs.upload-coverage && matrix.python-version == '3.13' && ${{ !cancelled() }}
+        if: ${{ inputs.upload-coverage && matrix.python-version == '3.13' && !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload coverage artifacts
-        if: inputs.upload-coverage && matrix.python-version == '3.13' && ${{ !cancelled() }}
+        if: ${{ inputs.upload-coverage && matrix.python-version == '3.13' && !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: coverage-python-${{ matrix.python-version }}
@@ -94,7 +94,7 @@ jobs:
           retention-days: 7
 
       - name: Upload junit artifacts
-        if: inputs.upload-coverage && matrix.python-version == '3.13' && ${{ !cancelled() }}
+        if: ${{ inputs.upload-coverage && matrix.python-version == '3.13' && !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
           name: junit-python-${{ matrix.python-version }}
