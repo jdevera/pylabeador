@@ -112,7 +112,8 @@ def nucleus(word: WordProgress):  # noqa: C901
     start_pos = word.pos
 
     if word.ended:
-        return
+        # The onset consumed the rest of the word: there is no vowel left for a nucleus
+        raise HyphenatorError("Syllable has no nucleus. Perhaps the word has no vowels?", word)
 
     if word.char == "y":
         # Check if 'y' should be treated as vowel in this context

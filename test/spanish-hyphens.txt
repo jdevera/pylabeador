@@ -128,7 +128,6 @@ vida vi-da 0 -
 sin sin 0 -
 están es-tán 1 3
 ver ver 0 -
-sr sr 0 -
 siempre siem-pre 0 -
 oh oh 0 -
 hasta has-ta 0 -
@@ -7079,7 +7078,6 @@ masas ma-sas 0 -
 camarote ca-ma-ro-te 2 -
 ofensiva o-fen-si-va 2 -
 cambiaste cam-bias-te 1 -
-pm pm 0 -
 larguémonos lar-gué-mo-nos 1 5
 balcón bal-cón 1 4
 acelera a-ce-le-ra 2 -

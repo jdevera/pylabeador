@@ -8,6 +8,12 @@ def test_empty_word_raises_hyphenator_error():
         pylabeador.syllabify("")
 
 
+@pytest.mark.parametrize("word", ["b", "bcd"])
+def test_word_without_vowels_raises_hyphenator_error(word):
+    with pytest.raises(pylabeador.HyphenatorError):
+        pylabeador.syllabify(word)
+
+
 def test_syllabify():
     res = pylabeador.syllabify("tenacidad")
     assert res == ["te", "na", "ci", "dad"]
