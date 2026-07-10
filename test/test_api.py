@@ -6,6 +6,16 @@ def test_syllabify():
     assert res == ["te", "na", "ci", "dad"]
 
 
+def test_hyphenate():
+    assert pylabeador.hyphenate("tenacidad") == "te-na-ci-dad"
+
+
+def test_public_api_exports():
+    for name in pylabeador.__all__:
+        assert hasattr(pylabeador, name)
+    assert "hyphenate" in pylabeador.__all__
+
+
 def test_syllabify_with_details():
     res = pylabeador.syllabify_with_details("tenacidad")
     assert res.hyphenated == "te-na-ci-dad"
