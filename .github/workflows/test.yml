@@ -91,6 +91,7 @@ jobs:
       - name: Run tests
         env:
           PYTHONPATH: src
+          HYPOTHESIS_PROFILE: ci
         run: uv run pytest --cov=./ --cov-report=xml --junitxml=junit.xml -o junit_family=legacy test
 
       - name: Upload coverage to Codecov
