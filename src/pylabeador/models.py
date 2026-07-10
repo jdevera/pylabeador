@@ -122,13 +122,6 @@ class WordProgress:
     def __getitem__(self, item):
         return self.word[item]
 
-    def check(self):
-        if self.stress_found:
-            if not self.syllables[self.stressed - 1].stressed:
-                raise ValueError("Stressed syllable is not stressed")
-            if len(list(filter(None, (s.stressed for s in self.syllables)))) != 1:
-                raise ValueError("Multiple stressed syllables")
-
     def add_syllable(self):
         syllable = Syllable()
         self.syllables.append(syllable)
