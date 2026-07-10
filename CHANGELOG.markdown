@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+### Fixed
+- Export the `hyphenate` function from the package namespace. It was documented
+  in the README but `pylabeador.hyphenate` raised `AttributeError`.
+- Empty input now raises `HyphenatorError` instead of leaking an `IndexError`.
+- Words without vowels (e.g. "pm") now raise `HyphenatorError` instead of
+  returning a syllable with no nucleus.
+
+### Changed
+- `SyllabifiedWord.syllables` is now a tuple instead of a list, making the
+  result object actually immutable.
+- The package now ships a `py.typed` marker (PEP 561), so type checkers can
+  use its annotations.
+
 ## [0.8.2] - 2025-09-09
 ### Fixed
 - [dev] Linter checks
