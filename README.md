@@ -21,16 +21,19 @@ You can use it as a Python library:
 >>> import pylabeador
 >>> pylabeador.syllabify("silabear")
 ['si', 'la', 'be', 'ar']
+
 ```
 
 ```python
 >>> pylabeador.hyphenate("palabra")
-pa-la-bra
+'pa-la-bra'
+
 ```
 
 ```python
 >>> pylabeador.syllabify_with_details("con")
 SyllabifiedWord(original='con', syllables=[Syllable(onset='c', nucleus='o', coda='n', accented=False, stressed=True)], stressed=0, accented=None)
+
 ```
 
 And you can use it as a command line tool:

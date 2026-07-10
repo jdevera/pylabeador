@@ -38,23 +38,23 @@ def syllabify_with_details(word: str) -> SyllabifiedWord:
         >>> from pprint import pprint
         >>> pprint(pylabeador.syllabify_with_details("encuentro"))
         SyllabifiedWord(original='encuentro',
-                syllables=[Syllable(onset='',
-                                    nucleus='e',
-                                    coda='n',
-                                    accented=False,
-                                    stressed=False),
-                           Syllable(onset='c',
-                                    nucleus='ue',
-                                    coda='n',
-                                    accented=False,
-                                    stressed=True),
-                           Syllable(onset='tr',
-                                    nucleus='o',
-                                    coda='',
-                                    accented=False,
-                                    stressed=False)],
-                stressed=1,
-                accented=None)
+                        syllables=[Syllable(onset='',
+                                            nucleus='e',
+                                            coda='n',
+                                            accented=False,
+                                            stressed=False),
+                                   Syllable(onset='c',
+                                            nucleus='ue',
+                                            coda='n',
+                                            accented=False,
+                                            stressed=True),
+                                   Syllable(onset='tr',
+                                            nucleus='o',
+                                            coda='',
+                                            accented=False,
+                                            stressed=False)],
+                        stressed=1,
+                        accented=None)
     """
 
     check_word_for_spanish_chars(word)
