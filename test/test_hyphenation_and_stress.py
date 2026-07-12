@@ -43,10 +43,10 @@ def spanish_common_words():
 def parametrize_with_words_from(source):
     return pytest.mark.parametrize(
         "word, hyphenated, stressed, accent_pos",
-        (
+        [
             pytest.param(word, hyphenation, stressed, accent_pos, id=word)
             for word, hyphenation, stressed, accent_pos in source
-        ),
+        ],
     )
 
 
