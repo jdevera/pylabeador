@@ -50,6 +50,10 @@ in-te-re-san-te
 
 La silabación automática sin conocimiento léxico o semántico adicional de las palabras solo puede llegar hasta cierto punto. Este silabeador no tiene tal conocimiento. Por esta razón, palabras como *transatlántico*, cuya silabación correcta es *trans-a-tlán-ti-co* o incluso *trans-at-lán-ti-co*, terminan siendo divididas aquí en *tran-sa-tlán-ti-co*. Para separar esto en silabas correctamente, es necesario saber que la palabra sin el prefijo existe en español con semántica similar a la de la palabra original. Esto se explica mejor y más detalladamente en este artículo: [Automatic syllabification for Spanish using lemmatization and derivation to solve the prefix's prominence issue](http://dx.doi.org/10.1016/j.eswa.2013.06.056)
 
+## Adaptación a JavaScript
+
+¿Necesitas esto en el navegador o en Node? [jsilabeador](https://github.com/jdevera/jsilabeador) es una adaptación a JavaScript de esta biblioteca, sin dependencias ([`jsilabeador` en npm](https://www.npmjs.com/package/jsilabeador)). Reproduce exactamente el comportamiento de pylabeador: su integración continua contrasta la estructura silábica completa de cada palabra del corpus de pruebas compartido con pylabeador.
+
 ## Inspiración / Fuente original
 
 Este trabajo está inspirado en la excelente herramienta online [Silabeador TIP](https://tulengua.iatext.ulpgc.es/silabas/). Esta herramienta considera la semántica de las palabras y separa correctamente las sílabas en presencia de prefijos. También proporcionan una librería en C++ que lleva a cabo la separación de sílabas *ingenua* que `pylabeador` hace. De hecho, *pylabeador* comenzó como una reescritura en Python de esa librería.

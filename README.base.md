@@ -78,6 +78,16 @@ Automatic syllabification without additional lexical or and semantic *knowledge*
 La silabación automática sin conocimiento léxico o semántico adicional de las palabras solo puede llegar hasta cierto punto. Este silabeador no tiene tal conocimiento. Por esta razón, palabras como *transatlántico*, cuya silabación correcta es *trans-a-tlán-ti-co* o incluso *trans-at-lán-ti-co*, terminan siendo divididas aquí en *tran-sa-tlán-ti-co*. Para separar esto en silabas correctamente, es necesario saber que la palabra sin el prefijo existe en español con semántica similar a la de la palabra original. Esto se explica mejor y más detalladamente en este artículo: [Automatic syllabification for Spanish using lemmatization and derivation to solve the prefix's prominence issue](http://dx.doi.org/10.1016/j.eswa.2013.06.056)
 
 <!-- [en] -->
+## JavaScript port
+
+Need this in the browser or in Node? [jsilabeador](https://github.com/jdevera/jsilabeador) is a zero-dependency JavaScript port of this library ([`jsilabeador` on npm](https://www.npmjs.com/package/jsilabeador)). It reproduces pylabeador's behavior exactly: its CI cross-validates the full syllable structure of every word in the shared test corpus against pylabeador.
+
+<!-- [es] -->
+## Adaptación a JavaScript
+
+¿Necesitas esto en el navegador o en Node? [jsilabeador](https://github.com/jdevera/jsilabeador) es una adaptación a JavaScript de esta biblioteca, sin dependencias ([`jsilabeador` en npm](https://www.npmjs.com/package/jsilabeador)). Reproduce exactamente el comportamiento de pylabeador: su integración continua contrasta la estructura silábica completa de cada palabra del corpus de pruebas compartido con pylabeador.
+
+<!-- [en] -->
 ## Inspiration / Original source
 
 This work is inspired by the excellent online tool [Silabeador TIP](https://tulengua.iatext.ulpgc.es/syllables/). This tool considers the semantics of the words and correctly separates syllables in the presence of prefixes. They also provide a C++ library that performs the naive syllable separation that `pylabeador` does. In fact, *pyleabeador* started as a Python port of that library.
