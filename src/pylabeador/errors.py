@@ -19,4 +19,14 @@
 
 
 class HyphenatorError(Exception):
-    pass
+    """
+    Error during syllabification.
+
+    The in-progress word state, when available, is kept in `word` for debugging
+    but stays out of the message shown to users.
+    """
+
+    def __init__(self, message, word=None):
+        super().__init__(message)
+        self.message = message
+        self.word = word

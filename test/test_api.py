@@ -16,6 +16,16 @@ def test_word_without_vowels_raises_hyphenator_error(word):
         pylabeador.syllabify(word)
 
 
+def test_error_message_is_just_the_message():
+    with pytest.raises(pylabeador.HyphenatorError) as exc_info:
+        pylabeador.syllabify("pm")
+    message = str(exc_info.value)
+    assert "no nucleus" in message
+    assert "WordProgress" not in message
+    # The word state is still available for debugging
+    assert exc_info.value.word.original_word == "pm"
+
+
 def test_syllabify():
     res = pylabeador.syllabify("tenacidad")
     assert res == ["te", "na", "ci", "dad"]
