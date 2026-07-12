@@ -144,3 +144,15 @@ run = "uv run mmg README.base.md --yes"
 [tasks.readme-validate]
 description = "Validate the base README file structure"
 run = "uv run mmg README.base.md --validation-only"
+
+[tasks.ty]
+description = "Run ty type checker"
+run = "uv run --isolated --with ty --group dev ty check . --output-format concise"
+
+[tasks.precommit]
+description = "Run pre-commit checks"
+run = "uv run --group dev pre-commit run --all-files"
+
+[tasks.all-checks]
+description = "Run all checks"
+depends = ["ci", "ty", "mypy", "precommit"]
