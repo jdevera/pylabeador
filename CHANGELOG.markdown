@@ -5,18 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Added
+- Support and test Python 3.14.
+
 ### Fixed
 - Export the `hyphenate` function from the package namespace. It was documented
   in the README but `pylabeador.hyphenate` raised `AttributeError`.
 - Empty input now raises `HyphenatorError` instead of leaking an `IndexError`.
 - Words without vowels (e.g. "pm") now raise `HyphenatorError` instead of
   returning a syllable with no nucleus.
+- Errors raised during syllabification no longer dump internal parser state
+  in their message. The in-progress word is available as the exception's
+  `word` attribute.
 
 ### Changed
 - `SyllabifiedWord.syllables` is now a tuple instead of a list, making the
   result object actually immutable.
 - The package now ships a `py.typed` marker (PEP 561), so type checkers can
   use its annotations.
+- The CLI keeps processing the remaining words when one fails, reporting each
+  error to stderr and exiting non-zero at the end.
 
 ## [0.8.2] - 2025-09-09
 ### Fixed
