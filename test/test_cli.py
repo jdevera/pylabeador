@@ -38,6 +38,16 @@ def test_cli_multiple_words():
     assert output == ["ca-sa", "pe-rro"]
 
 
+def test_cli_continues_after_bad_word():
+    with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
+        with patch("sys.stderr", new_callable=io.StringIO) as mock_stderr:
+            with pytest.raises(SystemExit) as exc_info:
+                main(["pylabeador", "casa", "hello123", "perro"])
+    assert exc_info.value.code == 1
+    assert mock_stdout.getvalue().strip().split("\n") == ["ca-sa", "pe-rro"]
+    assert "invalid letters" in mock_stderr.getvalue()
+
+
 def test_cli_invalid_characters_error():
     with patch("sys.stderr", new_callable=io.StringIO) as mock_stderr:
         with pytest.raises(SystemExit) as exc_info:

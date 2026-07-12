@@ -36,15 +36,19 @@ def main(argv=None):
     if argv is None:
         argv = sys.argv
     args = parse_args(argv)
+    failed = False
     try:
         for word in args.words:
-            res = syllabify_with_details(word)
-            print(res.hyphenated)
-    except HyphenatorError as e:
-        print(f"Error: {str(e)}", file=sys.stderr)
-        sys.exit(1)
+            try:
+                res = syllabify_with_details(word)
+                print(res.hyphenated)
+            except HyphenatorError as e:
+                failed = True
+                print(f"Error: {str(e)}", file=sys.stderr)
     except KeyboardInterrupt:
         sys.exit(-1)
+    if failed:
+        sys.exit(1)
 
 
 def entrypoint():
