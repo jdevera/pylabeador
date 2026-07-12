@@ -17,6 +17,8 @@
 # along with Pylabeador.  If not, see <https://www.gnu.org/licenses/>.
 # -------------------------------------------------------------------------------------
 
+from .errors import HyphenatorError
+
 VOWELS = set("aáeéiíoóuúü")
 CONSONANTS = set("bcdfghjklmnñpqrstvwxyz")
 LETTERS = VOWELS.union(CONSONANTS)
@@ -45,8 +47,6 @@ def check_word_for_spanish_chars(word):
     Some characters are valid in Spanish only in specific contexts, such as 'ü'
     in 'güe' or 'güi'.
     """
-
-    from .errors import HyphenatorError
 
     if not word:
         raise HyphenatorError("The word is empty")
