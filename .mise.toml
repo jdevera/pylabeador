@@ -36,6 +36,8 @@ run = "mise test-version 3.11"
 run = "mise test-version 3.12"
 [tasks.test-313]
 run = "mise test-version 3.13"
+[tasks.test-314]
+run = "mise test-version 3.14"
 
 [tasks.test-matrix]
 description = "Run the test suite with pytest on a matrix of python versions"
@@ -44,6 +46,7 @@ depends = [
   "test-311",
   "test-312",
   "test-313",
+  "test-314",
 ]
 
 [tasks.lint]
