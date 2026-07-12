@@ -41,11 +41,10 @@ HEADER = """\
 """
 
 DEFAULT_OUTPUT_FILE = TEST_DIR / "spanish-hyphens.txt"
-DEFAULT_INPUT_FILE = TEST_DIR / "commonspanish"
 
 
 @click.command()
-@click.option("--input", "-i", "input_file", type=click.File("r"), default=DEFAULT_INPUT_FILE)
+@click.option("--input", "-i", "input_file", type=click.File("r"), required=True)
 @click.option("--output", "-o", "output_file", type=click.File("w"), default=DEFAULT_OUTPUT_FILE)
 @click.option(
     "--try-hard",
