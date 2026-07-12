@@ -4,8 +4,14 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
 
   - package-ecosystem: uv
     directory: /
     schedule:
       interval: monthly
+    groups:
+      python-dependencies:
+        patterns: ["*"]
