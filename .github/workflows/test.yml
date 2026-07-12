@@ -18,6 +18,9 @@ on:
         required: false
         description: "Codecov token for uploading coverage"
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint

@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: read
+
 jobs:
   test:
     uses: ./.github/workflows/test.yml
@@ -20,6 +23,7 @@ jobs:
     needs: test
     environment: pypi
     permissions:
+      contents: read
       id-token: write
 
     steps:
