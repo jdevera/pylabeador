@@ -92,7 +92,7 @@ jobs:
         env:
           PYTHONPATH: src
           HYPOTHESIS_PROFILE: ci
-        run: uv run pytest --cov=./ --cov-report=xml --junitxml=junit.xml -o junit_family=legacy test
+        run: uv run pytest --cov=src/pylabeador --cov-report=xml --junitxml=junit.xml -o junit_family=legacy test
 
       - name: Upload coverage to Codecov
         if: inputs.upload-coverage && matrix.python-version == '3.13'
