@@ -37,6 +37,14 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-groups --all-extras
 
+      - name: Verify tag matches package version
+        run: |
+          version=$(uv run hatch version)
+          if [ "${GITHUB_REF_NAME}" != "v${version}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package version v${version}"
+            exit 1
+          fi
+
       - name: Build package
         run: uv build
 
