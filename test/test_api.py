@@ -23,7 +23,9 @@ def test_error_message_is_just_the_message():
     assert "no nucleus" in message
     assert "WordProgress" not in message
     # The word state is still available for debugging
-    assert exc_info.value.word.original_word == "pm"
+    word_state = exc_info.value.word
+    assert word_state is not None
+    assert word_state.original_word == "pm"
 
 
 def test_syllabify():

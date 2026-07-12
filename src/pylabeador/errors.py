@@ -18,6 +18,12 @@
 # -------------------------------------------------------------------------------------
 
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .models import WordProgress
+
+
 class HyphenatorError(Exception):
     """
     Error during syllabification.
@@ -26,7 +32,7 @@ class HyphenatorError(Exception):
     but stays out of the message shown to users.
     """
 
-    def __init__(self, message, word=None):
+    def __init__(self, message: str, word: "WordProgress | None" = None) -> None:
         super().__init__(message)
         self.message = message
         self.word = word
