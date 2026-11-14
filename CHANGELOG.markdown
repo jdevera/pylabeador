@@ -9,6 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Update development dependencies to address known vulnerabilities in filelock,
   nbconvert, soupsieve, tornado, uv, and virtualenv.
 - Update the uv and Ruff pre-commit hooks and pin the development uv version.
+- Generate and upload PyPI publish attestations for release distributions.
+- Separate release builds from publishing credentials, enforce the dependency
+  lockfile in CI, and pin GitHub Actions to immutable commits.
 
 ### Changed
 - Drop Python 3.10 support and add support and tests for Python 3.15.

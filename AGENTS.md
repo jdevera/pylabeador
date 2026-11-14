@@ -40,6 +40,11 @@ This project uses `mise` for task management and `uv` for Python package managem
 - There is a `CHANGELOG.markdown` based on https://keepachangelog.com/en/1.0.0/
 - `mise run ci` must run clean before tagging a release
 - Never push to github or release, this will only be done manually
+- Tagged releases build with locked dependencies in a read-only job. A separate
+  `publish` job in `.github/workflows/release.yml` uses the `pypi` environment and
+  PyPI Trusted Publishing to upload the distributions with publish attestations.
+- After a release, verify provenance for both the wheel and source distribution
+  on PyPI's Security tab. Attestations apply to new uploads, not existing releases.
 
 
 ## Architecture
