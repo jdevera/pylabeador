@@ -1,7 +1,7 @@
 [project]
 name = "pylabeador"
 description = "Automatic syllabification for Spanish words"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = "GPL-3.0-or-later"
 license-files = ["COPYING"]
 authors = [{ name = "Jacobo de Vera", email = "devel@jacobodevera.com" }]
@@ -11,11 +11,11 @@ classifiers = [
   "Intended Audience :: Science/Research",
   "Natural Language :: Spanish",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
   "Topic :: Software Development :: Libraries",
   "Topic :: Text Processing",
   "Topic :: Text Processing :: Linguistic",
@@ -48,6 +48,9 @@ dev = [
 requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
+[tool.uv.dependency-groups]
+dev = { requires-python = ">=3.11.5" }
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/pylabeador"]
 
@@ -70,7 +73,7 @@ disable_test_id_escaping_and_forfeit_all_rights_to_community_support = true
 
 [tool.ruff]
 line-length = 120
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "C", "N", "UP", "S", "RET", "I001"]
@@ -87,7 +90,7 @@ quote-style = "double"
 indent-style = "space"
 
 [tool.tox]
-envlist = ["py310", "py311", "py312", "py313", "py314"]
+envlist = ["py311", "py312", "py313", "py314", "py315"]
 
 [tool.tox.env_run_base]
 deps = ["pytest"]

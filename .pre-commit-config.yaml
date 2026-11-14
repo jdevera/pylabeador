@@ -17,16 +17,17 @@ repos:
 
   - repo: https://github.com/astral-sh/uv-pre-commit
     # uv version.
-    rev: 0.8.17
+    rev: 0.13.8
     hooks:
       - id: uv-lock
 
   # Ruff for linting and formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.12
+    rev: v0.17.5
     hooks:
       - id: ruff-check
       - id: ruff-format
+        types_or: [python, pyi, jupyter]
 
   - repo: local
     hooks:

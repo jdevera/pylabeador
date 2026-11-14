@@ -1,6 +1,6 @@
 [tools]
 python = "3.13"
-uv = "latest"
+uv = "0.13.8"
 
 [env]
 _.file = { path = ".env", redact = true }
@@ -28,8 +28,6 @@ env = { PYTHONPATH = "src" }
 run = "uv run --python $usage_version --group dev --isolated pytest"
 
 
-[tasks.test-310]
-run = "mise test-version 3.10"
 [tasks.test-311]
 run = "mise test-version 3.11"
 [tasks.test-312]
@@ -38,15 +36,17 @@ run = "mise test-version 3.12"
 run = "mise test-version 3.13"
 [tasks.test-314]
 run = "mise test-version 3.14"
+[tasks.test-315]
+run = "mise test-version 3.15"
 
 [tasks.test-matrix]
 description = "Run the test suite with pytest on a matrix of python versions"
 depends = [
-  "test-310",
   "test-311",
   "test-312",
   "test-313",
   "test-314",
+  "test-315",
 ]
 
 [tasks.lint]

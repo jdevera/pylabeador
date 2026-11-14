@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+### Security
+- Update development dependencies to address known vulnerabilities in filelock,
+  nbconvert, soupsieve, tornado, uv, and virtualenv.
+- Update the uv and Ruff pre-commit hooks and pin the development uv version.
+
+### Changed
+- Drop Python 3.10 support and add support and tests for Python 3.15.
+- Require Python 3.11.5 or newer for development dependencies to avoid vulnerable
+  fallback versions. The library requires Python 3.11 or newer.
+
 ## [0.9.0] - 2026-07-12
 ### Added
 - Support and test Python 3.14.

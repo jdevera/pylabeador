@@ -121,6 +121,6 @@ This file is regenerated from itself using `tools/hyphenfile.py` (via `mise run 
 
 - **Build tool**: Hatchling (configured in pyproject.toml)
 - **Package manager**: uv
-- **Python versions**: 3.10-3.13
+- **Python versions**: 3.11-3.15 (development dependencies require 3.11.5+)
 - **Linting**: ruff with strict rules (E, F, I, B, C, N, UP, S, RET, I001)
 - **Line length**: 120 characters

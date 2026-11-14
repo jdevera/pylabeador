@@ -55,4 +55,4 @@ def test_syllabified_word_is_immutable():
     with pytest.raises(dataclasses.FrozenInstanceError):
         res.original = "otra"  # ty: ignore[invalid-assignment]
     with pytest.raises(AttributeError):
-        res.syllables.append(pylabeador.Syllable())  # ty: ignore[unresolved-attribute]
+        res.syllables.append(pylabeador.Syllable())  # ty: ignore[missing-attribute]
