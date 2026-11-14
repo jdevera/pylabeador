@@ -101,18 +101,6 @@ echo "Uploading to test site"
 uv publish --publish-url https://test.pypi.org/legacy/ --token "$TEST_PYPI_TOKEN"
 '''
 
-[tasks.publish]
-description = "Publish to PyPI (requires REAL_PYPI_TOKEN)"
-confirm = "Are you sure you want to publish to PyPI?"
-run = '''
-if [[ -z $REAL_PYPI_TOKEN ]]; then
-  echo "Set the token for the REAL PyPI site as \$REAL_PYPI_TOKEN"
-  exit 1
-fi
-echo "Uploading to PyPI"
-uv publish --token "$REAL_PYPI_TOKEN"
-'''
-
 [tasks.publish-check]
 description = "Check if the package is ready to be published (is the tip a version tag and is it the same the version in the code?)"
 run = '''
@@ -128,10 +116,6 @@ if [[ $git_tag != v$version ]]; then
 fi
 echo "The package is ready to be published"
 '''
-
-[tasks.release]
-description = "Complete release process: bump, tag, and publish"
-depends = ["bump", "tag", "publish"]
 
 [tasks.gen-test-data]
 description = "Generate test data"

@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   lockfile in CI, and pin GitHub Actions to immutable commits.
 
 ### Changed
+- Remove the local `publish` and `release` tasks; production releases use the
+  tag-triggered GitHub Actions workflow.
 - Drop Python 3.10 support and add support and tests for Python 3.15.
 - Require Python 3.11.5 or newer for development dependencies to avoid vulnerable
   fallback versions. The library requires Python 3.11 or newer.

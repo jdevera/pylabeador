@@ -31,7 +31,9 @@ This project uses `mise` for task management and `uv` for Python package managem
 - `mise run bump <version>` - Bump version and commit changes
 - `mise run tag` - Create git tag with current version
 - `mise run publish-test` - Publish to test PyPI (requires TEST_PYPI_TOKEN)
-- `mise run publish` - NEVER USE, ABSOLUTELY NEVER
+- `mise run publish-check` - Verify that HEAD is tagged with the package version
+- Production publishing runs through `.github/workflows/release.yml` when a
+  version tag is manually pushed to GitHub.
 
 ## Project Management
 
